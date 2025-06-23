@@ -1,12 +1,7 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-
+const inter = Inter({subsets: ["latin"]})
 
 
 export const metadata = {
@@ -15,9 +10,22 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
+  const header = (
+    <header className="p-4 sm:p-8 flex items-center justify-between gap-4">
+      <h1>header</h1>
+    </header>
+  )
+
+    const footer = (
+    <footer className="p-4 text-center">
+      Created with 💜
+    </footer>
+  )
+
   return (
     <html lang="en">
-      <body>
+      <body className={"max-w-[1000px] w-full mx-auto min-h-screen flex flex-col text-sm sm:text-base md:text-lg " + inter.className}>
         {header}
         {children}
         {footer}

@@ -9,15 +9,14 @@ export const metadata = {
 export default function DashboardPage(){
 
     const isAuthenticated = false
-    const children = {
+    const children = (
         <Login />
-        <Dashboard />
-    }
+    )
 
     if (isAuthenticated){
-        children = {
+        children = (
             <Dashboard />
-        }
+        )
     }
 
     return (
