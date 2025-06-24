@@ -12,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
 
   const header = (
-    <header className="p-4 sm:p-8 flex items-center justify-between gap-4">
+    <header className={"p-4 sm:p-8 flex items-center justify-between gap-4 " + inter.className}>
       <h1>header</h1>
     </header>
   )
