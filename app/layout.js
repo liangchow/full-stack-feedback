@@ -12,13 +12,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
 
   const header = (
-    <header className={"p-4 sm:p-8 flex items-center justify-between gap-4 " + inter.className}>
+    <header className={"p-4 sm:p-8 flex items-center justify-between gap-4 textGradient " + inter.className}>
       <h1>header</h1>
     </header>
   )
 
     const footer = (
-    <footer className="p-4 text-center">
+    <footer className="p-4 sm:p-8 text-center">
       Created with 💜
     </footer>
   )
