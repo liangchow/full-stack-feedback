@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body className={"max-w-[1000px] w-full mx-auto min-h-screen flex flex-col text-sm sm:text-base md:text-lg " + inter.className}>
+      <body className={"max-w-[1000px] w-full mx-auto min-h-screen flex flex-col text-slate-800 text-sm sm:text-base md:text-lg " + inter.className}>
         {header}
         {children}
         {footer}
