@@ -13,8 +13,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
 
   const header = (
-    <header className={"text-xl sm:text-2xl md:text-3xl p-4 sm:p-8 flex items-center justify-between gap-4 textGradient " + fugaz.className}>
-      <h1>header</h1>
+    <header className="p-4 sm:p-8 flex items-center justify-between gap-4">
+      <h1 className={"text-lg sm:text-xl md:text-2xl textGradient " + fugaz.className}>header</h1>
+      <div className="flex items-center justify-between">PLACEHOLDER</div>
     </header>
   )
 
