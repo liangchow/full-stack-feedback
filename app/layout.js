@@ -1,7 +1,8 @@
-import { Open_Sans } from "next/font/google";
+import { Fugaz_One, Open_Sans } from "next/font/google";
 import "./globals.css";
 
 const opensans = Open_Sans({subsets: ["latin"]})
+const fugaz = Fugaz_One({subsets: ["latin"], weight:["400"]})
 
 
 export const metadata = {
@@ -12,14 +13,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
 
   const header = (
-    <header className={"p-4 sm:p-8 flex items-center justify-between gap-4 textGradient " + opensans.className}>
+    <header className={"text-xl sm:text-2xl md:text-3xl p-4 sm:p-8 flex items-center justify-between gap-4 textGradient " + fugaz.className}>
       <h1>header</h1>
     </header>
   )
 
     const footer = (
     <footer className="p-4 sm:p-8 grid place-items-center ">
-      <p className={"text-indigo-500 "+ opensans.className}>Created with 💜</p>
+      <p className={"text-indigo-500 "+ fugaz.className}>Created with 💜</p>
     </footer>
   )
 
