@@ -13,16 +13,6 @@
     inherits: false;
 }
 
-/* @theme {
-  --glower-border: 3s animate-border linear infinite;
-
-  @keyframes animate-border {
-    to {
-      --angle: 360deg;
-    }
-  }
-} */
-
 @theme {
   --animate-background: 3s glowing-border linear infinite;
 
@@ -32,3 +22,6 @@
     }
   }
 }
+
+
+/* https://neonmint.efeele.dev/blog/posts/how-to-create-an-animated-border-with-tailwind */
