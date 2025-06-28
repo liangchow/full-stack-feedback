@@ -7,17 +7,28 @@
 }
 
 
-@theme {
-  --animate-background: background-move ease infinite;
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
 
-  @keyframes background-move {
-    0%,
-    100% {
-      background-position: 0% 50%;
+/* @theme {
+  --glower-border: 3s animate-border linear infinite;
+
+  @keyframes animate-border {
+    to {
+      --angle: 360deg;
     }
+  }
+} */
 
-    50% {
-      background-position: 100% 50%;
+@theme {
+  --animate-background: 3s glowing-border linear infinite;
+
+  @keyframes glowing-border {
+    to {
+      --angle: 360deg;
     }
   }
 }

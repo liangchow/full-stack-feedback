@@ -15,7 +15,8 @@ export default function Button(props) {
         //     {text}
         //     </p>
         // </button>
-        <button className="block animate-background rounded-full bg-conic from-green-300 via-blue-600 to-red-300 bg-[length:_400%_400%] p-1 [animation-duration:_6s]">
+        <button className={"rounded-full overflow-hidden animate-background bg-conic/[from_var(--angle)] from-green-300 via-blue-600 to-red-300 " +
+            (dark ? "text-white bg-indigo-600 " : "text-indigo-600")}>
             <p className={"border px-6 sm:px-10 py-2 sm:py-3 " + fugaz.className}>{text}</p>
         </button>
     )
