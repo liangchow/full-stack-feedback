@@ -6,10 +6,18 @@
     -webkit-text-fill-color: transparent;
 }
 
-.btn::after{
-    content: '';
-    position: absolute;
-    inset: -3px;
-    background: #d11149;
-    z-index: -1;
+
+@theme {
+  --animate-background: background-move ease infinite;
+
+  @keyframes background-move {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+  }
 }
