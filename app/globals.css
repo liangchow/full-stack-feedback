@@ -14,7 +14,7 @@
 }
 
 @theme {
-  --animate-background: 3s glowing-border linear infinite;
+  --animate-background: 5s glowing-border linear infinite;
 
   @keyframes glowing-border {
     to {
