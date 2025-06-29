@@ -12,7 +12,7 @@ export default function Hero() {
         <span className="textGradient"> daily</span> mood!</h1>
       <p className="max-w-[600px] w-full mx-auto text-lg sm:text-xl md:text-2xl text-center">Create your mood record and see how you feel <span className="font-semibold">every day.</span></p>
       <div className="grid grid-cols-2 gap-4 w-fit mx-auto">
-        <Button text="Sign Up" />
+        <Button glow text="Sign Up" />
         <Button text="Login" />
       </div>
       <CardList />
