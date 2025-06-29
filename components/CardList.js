@@ -1,7 +1,19 @@
 import React from 'react'
+import Card from './Card'
 
-export default function CardList() {
+export default function CardList(props) {
+    
+    const { todos } = props
+
   return (
-    <div className='flex flex-col gap-2'>CardList</div>
+    <ul className=''>
+        {todos.map((todo, todoIndex) => {
+            return(
+                <Card {...props} key={todoIndex} index={todoIndex} >
+                   <p>{todo}</p> 
+                </Card>
+            )
+        })}
+    </ul>
   )
 }

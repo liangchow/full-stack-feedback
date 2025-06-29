@@ -1,5 +1,7 @@
+'use client'
 import { Fugaz_One } from 'next/font/google'
-import React from 'react'
+import React, { useState } from 'react'
+import CardList from './CardList'
 
 const fugaz = Fugaz_One({subsets: ["latin"], weight: ["400"]})
 
@@ -9,6 +11,11 @@ export default function Dashboard() {
     num_days: 14,
     time_remaining: '13:14:26',
   }
+
+  const [todos, setTodos] = useState({
+    1 : {comment: "You are awesome!", rating: 5},
+    2 : {comment: "You're the best ;)", rating: 4},
+  })
 
   return (
     <div className='flex flex-col flex-1 gap-10 sm:gap-14 md:gap-20'>
@@ -26,6 +33,7 @@ export default function Dashboard() {
       <h4 className={'text-5xl sm:text-6xl md:text-7xl text-center ' + fugaz.className}>
         How do you <span>feel</span> today?
       </h4>
+      <CardList />
     </div>
   )
 }
