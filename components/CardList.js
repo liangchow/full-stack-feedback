@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function CardList() {
   return (
-    <div>CardList</div>
+    <div className='flex flex-col gap-2'>CardList</div>
   )
 }
