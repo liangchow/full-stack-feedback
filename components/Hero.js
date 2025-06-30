@@ -15,7 +15,7 @@ export default function Hero() {
         <Button glow text="Sign Up" />
         <Button text="Login" />
       </div>
-      <CardList />
+      {/* <CardList /> */}
     </div>
   )
 }

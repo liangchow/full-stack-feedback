@@ -12,10 +12,10 @@ export default function Dashboard() {
     time_remaining: '13:14:26',
   }
 
-  const [todos, setTodos] = useState({
-    1 : {comment: "You are awesome!", rating: 5},
-    2 : {comment: "You're the best ;)", rating: 4},
-  })
+  const [todos, setTodos] = useState([
+    "You are awesome!",
+    "You're the best ;) I have not met people like you. I am wishing you the best in your future endeavors",
+  ])
 
   return (
     <div className='flex flex-col flex-1 gap-10 sm:gap-14 md:gap-20'>
@@ -30,10 +30,10 @@ export default function Dashboard() {
             </div>)
         })}
       </div>
-      <h4 className={'text-5xl sm:text-6xl md:text-7xl text-center ' + fugaz.className}>
-        How do you <span>feel</span> today?
+      <h4 className={'text-4xl sm:text-5xl md:text-6xl text-center ' + fugaz.className}>
+        What did your colleague <span>say</span> about you?
       </h4>
-      <CardList />
+      <CardList todos={todos} />
     </div>
   )
 }
