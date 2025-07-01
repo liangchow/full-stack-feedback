@@ -2,6 +2,7 @@ import { Fugaz_One} from "next/font/google";
 import React from 'react'
 import Button from "./Button";
 import CardList from "./CardList";
+import Panel from "./Panel";
 import { demoData } from "@/utils";
 
 const fugaz = Fugaz_One({subsets: ["latin"], weight: ["400"]})
@@ -16,7 +17,10 @@ export default function Hero() {
         <Button glow text="Sign Up" />
         <Button text="Login" />
       </div>
-      <CardList todos={demoData} />
+      <div className="flex flex-col p-4 sm:p-8 md:p-12">
+        <Panel />
+        <CardList todos={demoData} />
+      </div>
     </div>
   )
 }

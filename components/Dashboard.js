@@ -33,7 +33,9 @@ export default function Dashboard() {
       <h4 className={'text-4xl sm:text-5xl md:text-6xl text-center ' + fugaz.className}>
         What did your colleague <span>say</span> about you?
       </h4>
-      <CardList todos={todos} />
+      <div className=''>
+        <CardList todos={todos} />
+      </div>
     </div>
   )
 }
