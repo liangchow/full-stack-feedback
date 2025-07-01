@@ -2,6 +2,7 @@
 import { Fugaz_One } from 'next/font/google'
 import React, { useState } from 'react'
 import CardList from './CardList'
+import Panel from './Panel'
 
 const fugaz = Fugaz_One({subsets: ["latin"], weight: ["400"]})
 
@@ -29,11 +30,13 @@ export default function Dashboard() {
                 {statuses[status]}</p>
             </div>)
         })}
+      <Panel />  
       </div>
       <h4 className={'text-4xl sm:text-5xl md:text-6xl text-center ' + fugaz.className}>
         What did your colleague <span>say</span> about you?
       </h4>
       <div className=''>
+        
         <CardList todos={todos} />
       </div>
     </div>
