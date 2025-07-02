@@ -23,6 +23,19 @@
   }
 }
 
+@theme {
+  --animate-fade: fade linear both;
+
+  @keyframes frade {
+    form {
+      opacity: 0;
+    } to {
+      opacity: 1;
+    }
+  }
+}
+
 
 /* https://neonmint.efeele.dev/blog/posts/how-to-create-an-animated-border-with-tailwind */
 /* https://www.hyperui.dev/blog/animated-border-gradient-with-tailwindcss */
+/* https://www.youtube.com/watch?v=rpCQEQAlMIE */
