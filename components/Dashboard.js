@@ -6,6 +6,9 @@ import Panel from './Panel'
 
 const fugaz = Fugaz_One({subsets: ["latin"], weight: ["400"]})
 
+// Init name for Panel
+let name = "Liang Chow"
+
 export default function Dashboard() {
 
   const statuses = {
@@ -30,7 +33,7 @@ export default function Dashboard() {
                 {statuses[status]}</p>
             </div>)
         })}
-      <Panel />  
+      <Panel name={name} />  
       </div>
       <h4 className={'text-4xl sm:text-5xl md:text-6xl text-center ' + fugaz.className}>
         What did your colleague <span>say</span> about you?

@@ -7,6 +7,9 @@ import { demoData } from "@/utils";
 
 const fugaz = Fugaz_One({subsets: ["latin"], weight: ["400"]})
 
+// Init name for Panel
+let name = 'Liang Chow'
+
 export default function Hero() {
   return (
     <div className="flex flex-col py-4 md:py-10 gap-8 sm:gap-10">
@@ -18,7 +21,7 @@ export default function Hero() {
         <Button text="Login" />
       </div>
       <div className="flex flex-col p-4 sm:p-8 md:p-12">
-        <Panel />
+        <Panel name={name} />
         <CardList todos={demoData} />
       </div>
     </div>
