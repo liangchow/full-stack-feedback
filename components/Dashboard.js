@@ -23,16 +23,14 @@ export default function Dashboard() {
 
   return (
     <div className='flex flex-col flex-1 gap-10 sm:gap-14 md:gap-20'>
-      <div className='grid grid-cols-1 sm:grid-cols-3 bg-indigo-50 text-indigo-500 rounded-lg'>
+      <div className='grid grid-cols-3 bg-indigo-50 text-indigo-500 rounded-lg p-4 gap-4'>
         {Object.keys(statuses).map((status, statusIndex) => {
           return (
-            <div key={statusIndex} className="p-4 flex flex-col gap-1 sm:gap-2">
-              <p className="font-medium uppercase text-xs sm:text-sm">
-                {status.replaceAll('_', '')}</p>
-              <p className={'text-base sm:text-lg ' + fugaz.className}>
-                {statuses[status]}</p>
-            </div>)
-        })}
+          <div key={statusIndex} className='flex flex-col gap-1 sm:gap-2'>
+            <p className='font-medium capitalize text-base sm:text-lg truncate'>{status.replaceAll('_',' ')}</p>
+            <p className={'text-base sm:text-lg truncate '+fugaz.className}>{statuses[status]}{status === 'num_days'? ' 🔥': '' }</p>
+          </div>
+          )})}
       <Panel name={name} />  
       </div>
       <h4 className={'text-4xl sm:text-5xl md:text-6xl text-center ' + fugaz.className}>

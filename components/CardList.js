@@ -6,7 +6,7 @@ export default function CardList(props) {
     const { todos } = props
 
   return (
-    <ul className='flex flex-col flex-1 gap-1'>
+    <ul className='flex flex-col flex-1 gap-1 p-4'>
         {todos.map((todo, todoIndex) => {
             return(
                 <Card {...props} key={todoIndex} index={todoIndex}>
