@@ -20,9 +20,9 @@ export default function Hero() {
         <Button glow text="Sign Up" />
         <Button text="Login" />
       </div>
-      <div className="flex flex-col p-2 sm:p-4 md:p-8">
+      <div className="flex flex-col p-2 sm:p-4 md:p-8 opacity-75 ">
         <Panel name={name} />
-        <CardList todos={demoData} />
+        <CardList demo todos={demoData} />
       </div>
     </div>
   )
