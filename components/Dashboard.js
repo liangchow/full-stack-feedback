@@ -12,7 +12,7 @@ let name = "Liang Chow"
 export default function Dashboard() {
 
   const statuses = {
-    num_days: 14,
+    num_reviews: 14,
     time_remaining: '13:14:26',
   }
 
@@ -21,6 +21,13 @@ export default function Dashboard() {
     "You're the best ;) I have not met people like you. I am wishing you the best in your future endeavors",
   ])
 
+  const [noShow, setNoShow] = useState(true)
+
+  // Toggle show or hide comment button on Card
+  function handleToggleNoShow(){
+    setNoShow(!noShow)
+  }
+
   return (
     <div className='flex flex-col flex-1 gap-10 sm:gap-14 md:gap-20'>
       <div className='grid grid-cols-3 bg-indigo-50 text-indigo-500 rounded-lg p-4 gap-4'>
@@ -28,7 +35,7 @@ export default function Dashboard() {
           return (
           <div key={statusIndex} className='flex flex-col gap-1 sm:gap-2'>
             <p className='font-medium capitalize text-base sm:text-lg truncate'>{status.replaceAll('_',' ')}</p>
-            <p className={'text-base sm:text-lg truncate '+fugaz.className}>{statuses[status]}{status === 'num_days'? ' 🔥': '' }</p>
+            <p className={'text-base sm:text-lg truncate '+fugaz.className}>{statuses[status]}{status === 'num_reviews'? ' 🔥': '' }</p>
           </div>
           )})}
       <Panel name={name} />  
@@ -38,7 +45,7 @@ export default function Dashboard() {
       </h4>
       <div className=''>
         
-        <CardList todos={todos} />
+        <CardList todos={todos} handleToggleNoShow={handleToggleNoShow} noShow={noShow} />
       </div>
     </div>
   )
