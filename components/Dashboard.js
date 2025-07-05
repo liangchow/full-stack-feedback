@@ -17,15 +17,15 @@ export default function Dashboard() {
   }
 
   const [todos, setTodos] = useState([
-    "You are awesome!",
-    "You're the best ;) I have not met people like you. I am wishing you the best in your future endeavors",
+    {peer: "Joe", comment: "You are awesome!", show: true},
+    {peer: "Jane", comment: "You're the best ;) I have not met people like you. I am wishing you the best in your future endeavors", show: true},
   ])
 
-  const [noShow, setNoShow] = useState(true)
+  const [show, setShow] = useState(true)
 
   // Toggle show or hide comment button on Card
-  function handleToggleNoShow(){
-    setNoShow(!noShow)
+  function handleToggleShow(){
+    setShow(!show)
   }
 
   return (
@@ -45,7 +45,7 @@ export default function Dashboard() {
       </h4>
       <div className=''>
         
-        <CardList todos={todos} handleToggleNoShow={handleToggleNoShow} noShow={noShow} />
+        <CardList todos={todos} handleToggleShow={handleToggleShow} show={show} />
       </div>
     </div>
   )
