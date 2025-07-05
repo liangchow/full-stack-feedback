@@ -17,8 +17,8 @@ export default function Dashboard() {
   }
 
   const [todos, setTodos] = useState([
-    {peer: "Joe", comment: "You are awesome!", show: true},
-    {peer: "Jane", comment: "You're the best ;) I have not met people like you. I am wishing you the best in your future endeavors", show: true},
+    {peer: "Joe", comment: "You are awesome!", rating: 5, show: true},
+    {peer: "Jane", comment: "You're the best ;) I have not met people like you. I am wishing you the best in your future endeavors", rating: 5, show: true},
   ])
 
   const [show, setShow] = useState(true)

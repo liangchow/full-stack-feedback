@@ -10,8 +10,11 @@ export default function CardList(props) {
         {todos.map((todo, todoIndex) => {
             return(
                 <Card {...props} key={todoIndex} index={todoIndex} >
-                   <div className="px-2 ">{todo.peer}:</div>
-                   <div className="px-2 ">{todo.comment}</div> 
+                  <div className='grid grid-cols-5 gap-4 '>
+                    <div className='col-span-1'>{todo.peer}:</div>
+                    <div className='col-span-full'>{todo.comment}</div>
+                    <div className='col-span-1 justify-items-end'>{todo.rating}</div>
+                  </div>
                 </Card>
             )
         })}
