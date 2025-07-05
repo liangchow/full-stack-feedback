@@ -10,10 +10,10 @@ export default function CardList(props) {
         {todos.map((todo, todoIndex) => {
             return(
                 <Card {...props} key={todoIndex} index={todoIndex} >
-                  <div className='grid grid-cols-5 gap-4 '>
+                  <div className='grid grid-cols-3 justify-items-start gap-0.5 '>
                     <div className='col-span-1'>{todo.peer}:</div>
-                    <div className='col-span-full'>{todo.comment}</div>
-                    <div className='col-span-1 justify-items-end'>{todo.rating}</div>
+                    <div className='...'>{todo.comment}</div>
+                    <div className='col-span-1'>{todo.rating}</div>
                   </div>
                 </Card>
             )
