@@ -7,7 +7,7 @@ import Panel from './Panel'
 const fugaz = Fugaz_One({subsets: ["latin"], weight: ["400"]})
 
 // Init name for Panel
-let name = "Liang Chow"
+let name = "Hello!"
 
 export default function Dashboard() {
 
@@ -17,8 +17,8 @@ export default function Dashboard() {
   }
 
   const [todos, setTodos] = useState([
-    {peer: "Joe", comment: "You are awesome!", rating: 5, show: true},
-    {peer: "Jane", comment: "You're the best ;) I have not met people like you. I am wishing you the best in your future endeavors", rating: 5, show: true},
+    {peer: "Joe Doe", comment: "You are awesome!", rating: 5, show: true},
+    {peer: "Jane Luwid", comment: "You're the best ;) I have not met people like you. I am wishing you the best in your future endeavors", rating: 5, show: true},
   ])
 
   const [show, setShow] = useState(true)

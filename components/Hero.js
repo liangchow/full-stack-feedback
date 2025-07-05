@@ -1,14 +1,15 @@
 import { Fugaz_One} from "next/font/google";
+import { demoData } from "@/utils";
 import React from 'react'
 import Button from "./Button";
 import CardList from "./CardList";
 import Panel from "./Panel";
-import { demoData } from "@/utils";
 
 const fugaz = Fugaz_One({subsets: ["latin"], weight: ["400"]})
 
 // Init name for Panel
 let name = 'Liang Chow'
+let src = 'https://liangchow.github.io/assets/img/profile/lchow.jpg'
 
 export default function Hero() {
   return (
@@ -21,7 +22,7 @@ export default function Hero() {
         <Button text="Login" />
       </div>
       <div className="flex flex-col p-2 sm:p-4 md:p-8 ">
-        <Panel name={name} />
+        <Panel name={name} src={src} />
         <CardList demo todos={demoData} />
       </div>
     </div>
