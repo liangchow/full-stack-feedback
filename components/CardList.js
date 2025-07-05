@@ -10,10 +10,10 @@ export default function CardList(props) {
         {todos.map((todo, todoIndex) => {
             return(
                 <Card {...props} key={todoIndex} index={todoIndex} >
-                  <div className='flex w-full justify-between gap-0.5 '>
-                    <div className='flex'>{todo.peer}:</div>
-                    <div className='flex text-left'>{todo.comment}</div>
-                    <div className='flex'>{todo.rating}</div>
+                  <div className='flex w-full justify-between items-center gap-1 '>
+                    <p className='flex p-2 '>{todo.peer}:</p>
+                    <p className='flex p-2 '>{todo.comment}</p>
+                    <p className='flex p-2 '>{todo.rating}</p>
                   </div>
                 </Card>
             )

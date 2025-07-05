@@ -6,7 +6,7 @@ export default function Card(props) {
     const { children, handleToggleShow, show, index, demo } = props
 
     return (
-        <li className='max-w-[1000px] w-full mx-auto flex justify-between rounded-3xl p-3 border-2 border-solid border-indigo-300 '>
+        <li className='max-w-[1000px] w-full mx-auto flex justify-between rounded-3xl p-2 border-2 border-solid border-indigo-300 '>
             {children}
             <div className={'flex p-2 gap-2 ' + (demo ? ' invisible' : '')}>
                 {/* Show and NoShow button */}
