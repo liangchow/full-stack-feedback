@@ -8,7 +8,8 @@ import Panel from "./Panel";
 const fugaz = Fugaz_One({subsets: ["latin"], weight: ["400"]})
 
 // Init name for Panel
-let name = 'Liang Chow'
+let firstName = 'Liang'
+let lastName = 'Chow'
 let src = 'https://liangchow.github.io/assets/img/profile/lchow.jpg'
 
 export default function Hero() {
@@ -22,7 +23,7 @@ export default function Hero() {
         <Button text="Login" />
       </div>
       <div className="flex flex-col p-2 sm:p-4 md:p-8 ">
-        <Panel name={name} src={src} />
+        <Panel firstName={firstName} lastName={lastName} src={src} />
         <CardList demo todos={demoData} />
       </div>
     </div>

@@ -17,8 +17,8 @@ export default function Dashboard() {
   }
 
   const [todos, setTodos] = useState([
-    {peer: "Joe Doe", comment: "You are awesome!", rating: 5, show: true},
-    {peer: "Jane Luwid", comment: "You're the best ;) I have not met people like you. I am wishing you the best in your future endeavors", rating: 5, show: true},
+    {firstName: "Joe", lastName: "Doe", comment: "You are awesome!", rating: 5, show: true, src: ""},
+    {firstName: "Simone", lastName: "Ming", comment: "You're the best ;) I have not met people like you. I am wishing you the best in your future endeavors", rating: 5, show: true, src: ""},
   ])
 
   const [show, setShow] = useState(true)
@@ -38,7 +38,7 @@ export default function Dashboard() {
             <p className={'text-base sm:text-lg truncate '+fugaz.className}>{statuses[status]}{status === 'num_reviews'? ' 🔥': '' }</p>
           </div>
           )})}
-      <Panel name={name} />  
+      <Panel todos={todos} />  
       </div>
       <h4 className={'text-4xl sm:text-5xl md:text-6xl text-center ' + fugaz.className}>
         What did your colleague <span>say</span> about you?

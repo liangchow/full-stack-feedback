@@ -6,13 +6,13 @@ const fugaz = Fugaz_One({subsets: ["latin"], weight: ["400"]})
 
 export default function Panel(props) {
 
-  const { name, src } = props
+  const { src, firstName, lastName } = props
   
 
   return (
     <div className="flex flex-col flex-1 items-center gap-4 p-4">
-        <Avatar src={src} name={name} />
-        <h2 className={"text-shadow-lg/10 text-indigo-500 items-center uppercase " + fugaz.className}>{name}</h2>
+        <Avatar src={src} firstName={firstName} lastName={lastName} />
+        <h2 className={"text-shadow-lg/10 text-indigo-500 items-center uppercase " + fugaz.className}>{firstName} {lastName}</h2>
     </div>
   )
 }
