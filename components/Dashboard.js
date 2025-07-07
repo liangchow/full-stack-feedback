@@ -6,8 +6,8 @@ import Panel from './Panel'
 
 const fugaz = Fugaz_One({subsets: ["latin"], weight: ["400"]})
 
-// Init name for Panel
-let name = "Hello!"
+// Init user name for Panel
+const user = {firstName: "Hello", lastName: "World", src: ""}
 
 export default function Dashboard() {
 
@@ -38,13 +38,12 @@ export default function Dashboard() {
             <p className={'text-base sm:text-lg truncate '+fugaz.className}>{statuses[status]}{status === 'num_reviews'? ' 🔥': '' }</p>
           </div>
           )})}
-      <Panel todos={todos} />  
+      <Panel user={user} />  
       </div>
       <h4 className={'text-4xl sm:text-5xl md:text-6xl text-center ' + fugaz.className}>
         What did your colleague <span>say</span> about you?
       </h4>
       <div className=''>
-        
         <CardList todos={todos} handleToggleShow={handleToggleShow} show={show} />
       </div>
     </div>
