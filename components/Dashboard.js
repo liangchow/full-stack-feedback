@@ -44,7 +44,7 @@ export default function Dashboard() {
         What did your colleague <span>say</span> about you?
       </h4>
       <div className=''>
-        <CardList todos={todos} handleToggleShow={handleToggleShow} show={show} />
+        <CardList todos={todos} handleToggleShow={handleToggleShow} />
       </div>
     </div>
   )

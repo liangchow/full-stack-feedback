@@ -3,7 +3,7 @@ import Card from './Card'
 
 export default function CardList(props) {
     
-    const { todos, demo } = props
+  const { todos, demo } = props
 
   return (
     <ul className='flex flex-col flex-1 gap-1 p-4'>
