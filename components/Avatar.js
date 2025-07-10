@@ -14,7 +14,7 @@ function renderAvatar(user){
     } else if (user.firstName || user.lastName){
         return (
             <div className='size-[100px] rounded-full bg-indigo-400 flex items-center justify-center'>
-                <p className={'text-3xl text-indigo-50 '+fugaz.className}>{user.firstName[0]}{user.lastName[0]}</p>
+                <p className={'text-4xl text-indigo-50 '+fugaz.className}>{user.firstName[0]}{user.lastName[0]}</p>
             </div>
         )
     }

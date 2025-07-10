@@ -13,13 +13,23 @@ export default function Dashboard() {
 
   const statuses = {
     num_reviews: 14,
-    time_remaining: '13:14:26',
+    average_rating: 4.3,
   }
+
+
+
 
   const [todos, setTodos] = useState([
     {firstName: "Joe", lastName: "Doe", comment: "You are awesome!", rating: 5, show: true, src: ""},
     {firstName: "Simone", lastName: "Ming", comment: "You're the best ;) I have not met people like you. I am wishing you the best in your future endeavors", rating: 5, show: true, src: ""},
   ])
+
+    function countValues(){
+    let avg_rating = todos.map(todo => todo.rating)
+
+    return console.log(avg_rating)
+
+  }
 
   const [show, setShow] = useState(true)
 
