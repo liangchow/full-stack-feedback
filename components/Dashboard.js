@@ -18,12 +18,13 @@ export default function Dashboard() {
   ])
 
     function countValues(todos){
-    let sumOfRating = todos.map(todo => todo.rating).reduce((sumOfRating,rating) => sumOfRating + rating, 0)
-    let numReviews = todos.length
+
+    let sumOfRating = todos.filter(todo => todo.show == true).map(todo => todo.rating).reduce((sumOfRating,rating) => sumOfRating + rating, 0)
+    let numReviews = todos.filter(todo => todo.show == true).length
 
     return {
       num_reviews: numReviews,
-      average_rating: sumOfRating/numReviews,
+      average_rating: (sumOfRating/numReviews).toFixed(1),
     }
   }
 
@@ -45,7 +46,7 @@ export default function Dashboard() {
           return (
           <div key={statusIndex} className='flex flex-col gap-1 sm:gap-2'>
             <p className='font-medium capitalize text-base sm:text-lg truncate'>{status.replaceAll('_',' ')}</p>
-            <p className={'text-base sm:text-lg truncate '+fugaz.className}>{statuses[status]}{status === 'num_reviews'? ' 🔥': '' }</p>
+            <p className={'text-lg sm:text-xl truncate '+fugaz.className}>{status === 'average_rating' ? '⭐ ': '' }{statuses[status]}{status === 'num_reviews' ? ' 🔥': '' }</p>
           </div>
           )})}
       <Panel user={user} />  
