@@ -32,12 +32,12 @@ export default function Dashboard() {
       ...countValues(todos)
   }
 
-  const [show, setShow] = useState(true)
+    const [show, setShow] = useState(true)
 
-  // Toggle show or hide comment button on Card
-  function handleToggleShow(){
-    setShow(!show)
-  }
+    // Toggle show or hide comment button on Card
+    function handleToggleShow(){
+      setShow(!show)
+    }
 
   return (
     <div className='flex flex-col flex-1 gap-10 sm:gap-14 md:gap-20'>
