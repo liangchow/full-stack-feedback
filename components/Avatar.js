@@ -8,7 +8,7 @@ function renderAvatar(user){
     if (user.src && typeof user.src === 'string'){
         return (
             <div>
-                <Image className='rounded-full shadow-lg shadow-indigo-500/50' src={user.src} size={100} style={{objectFit: "contain"}} alt="pp" />
+                <Image className='rounded-full shadow-lg shadow-indigo-500/50' src={user.src} width={100} height={100} style={{objectFit: "contain"}} alt="pp" />
             </div>
         )
     } else if (user.firstName || user.lastName){
