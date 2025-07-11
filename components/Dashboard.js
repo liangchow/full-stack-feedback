@@ -13,7 +13,7 @@ export default function Dashboard() {
 
 
   const [todos, setTodos] = useState([
-    {firstName: "Joe", lastName: "Doe", comment: "You are awesome!", rating: 4, show: true, src: ""},
+    {firstName: "Joe", lastName: "Doe", comment: "You are awesome!", rating: 4, show: true, src: "https://liangchow.github.io/assets/img/profile/lchow.jpg"},
     {firstName: "Simone", lastName: "Ming", comment: "You're the best ;) I have not met people like you. I am wishing you the best in your future endeavors", rating: 5, show: true, src: ""},
   ])
 
