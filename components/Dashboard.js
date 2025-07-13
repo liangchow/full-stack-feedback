@@ -13,14 +13,14 @@ export default function Dashboard() {
 
 
   const [todos, setTodos] = useState([
-    {firstName: "Joe", lastName: "Doe", comment: "You are awesome!", rating: 4, show: true, src: "https://liangchow.github.io/assets/img/profile/lchow.jpg"},
-    {firstName: "Simone", lastName: "Ming", comment: "You're the best ;) I have not met people like you. I am wishing you the best in your future endeavors", rating: 5, show: true, src: ""},
+    {firstName: "Joe", lastName: "Doe", comment: "You are awesome!", rating: 4, status: false, src: "https://liangchow.github.io/assets/img/profile/lchow.jpg"},
+    {firstName: "Simone", lastName: "Ming", comment: "You're the best ;) I have not met people like you. I am wishing you the best in your future endeavors", rating: 5, status: true, src: ""},
   ])
 
     function countValues(todos){
 
-    let sumOfRating = todos.filter(todo => todo.show == true).map(todo => todo.rating).reduce((sumOfRating,rating) => sumOfRating + rating, 0)
-    let numReviews = todos.filter(todo => todo.show == true).length
+    let sumOfRating = todos.filter(todo => todo.status == true).map(todo => todo.rating).reduce((sumOfRating,rating) => sumOfRating + rating, 0)
+    let numReviews = todos.filter(todo => todo.status == true).length
 
     return {
       num_reviews: numReviews,
@@ -28,25 +28,26 @@ export default function Dashboard() {
     }
   }
 
-    const statuses = {
+    const stats = {
       ...countValues(todos)
   }
 
-    const [show, setShow] = useState(true)
+    const [status, setStatus] = useState(true)
 
     // Toggle show or hide comment button on Card
-    function handleToggleShow(){
-      setShow(!show)
+    function handleToggleStatus(){
+      setStatus(!status)
+      todos.status == status;
     }
 
   return (
     <div className='flex flex-col flex-1 gap-10 sm:gap-14 md:gap-20'>
       <div className='grid grid-cols-3 bg-indigo-50 text-indigo-500 rounded-lg p-4 gap-4'>
-        {Object.keys(statuses).map((status, statusIndex) => {
+        {Object.keys(stats).map((stat, statIndex) => {
           return (
-          <div key={statusIndex} className='flex flex-col gap-1 sm:gap-2'>
-            <p className='font-medium capitalize text-base sm:text-lg truncate'>{status.replaceAll('_',' ')}</p>
-            <p className={'text-lg sm:text-xl truncate '+fugaz.className}>{status === 'average_rating' ? '⭐ ': '' }{statuses[status]}{status === 'num_reviews' ? ' 🔥': '' }</p>
+          <div key={statIndex} className='flex flex-col gap-1 sm:gap-2'>
+            <p className='font-medium capitalize text-base sm:text-lg truncate'>{stat.replaceAll('_',' ')}</p>
+            <p className={'text-lg sm:text-xl truncate ' + fugaz.className}>{stat === 'average_rating' ? '⭐ ': '' }{stats[stat]}{stat === 'num_reviews' ? ' 🔥': '' }</p>
           </div>
           )})}
       <Panel user={user} />  
@@ -55,7 +56,7 @@ export default function Dashboard() {
         What did your colleague <span>say</span> about you?
       </h4>
       <div className=''>
-        <CardList todos={todos} handleToggleShow={handleToggleShow} />
+        <CardList todos={todos} handleToggleStatus={handleToggleStatus} />
       </div>
     </div>
   )

@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 export default function Card(props) {
 
-    const { children, handleToggleShow, index, demo } = props
+    const { children, handleToggleShow, status, index, demo } = props
 
     if (demo) {
         return (
@@ -19,7 +19,7 @@ export default function Card(props) {
                 {children}
                 <div className='flex flex-col items-center p-2 gap-2 '>
                      {/* Show and NoShow button */}
-                    <button onClick={() => handleToggleShow(index)}><i className={"text-indigo-600 hover:text-indigo-400 cursor-pointer transition " + (" fa-solid fa-eye-slash")}></i></button>
+                    <button onClick={() => handleToggleStatus(index)}><i className={"text-indigo-600 hover:text-indigo-400 cursor-pointer transition " + (status == true ? "fa-solid fa-eye-slash" : "fa-solid fa-eye")}></i></button>
                 </div>
             </li>
         )
