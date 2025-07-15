@@ -4,6 +4,7 @@ import React from 'react'
 import Button from "./Button";
 import CardList from "./CardList";
 import Panel from "./Panel";
+import Link from "next/link";
 
 const fugaz = Fugaz_One({subsets: ["latin"], weight: ["400"]})
 
@@ -18,8 +19,12 @@ export default function Hero() {
         <span className="textGradient"> feedback</span>!</h1>
       <p className="max-w-[500px] w-full mx-auto text-lg sm:text-xl md:text-2xl text-center">Create your mood record and see how you feel <span className="font-semibold">every day.</span></p>
       <div className="grid grid-cols-2 gap-4 w-fit mx-auto">
-        <Button glow text="Sign Up" />
-        <Button text="Login" />
+        <Link href={'/dashboard'}>
+          <Button glow text="Sign Up" />
+        </Link>
+        <Link href={'/dashboard'}>
+          <Button text="Login" />
+        </Link>
       </div>
       <div className="flex flex-col p-2 sm:p-4 md:p-8 ">
         {/* Demo data */}

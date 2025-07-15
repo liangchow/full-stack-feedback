@@ -42,6 +42,7 @@ export function AuthProvider({children}){
 
                 // if no user exists, return
                 if (!user){
+                    console.log('No user found')
                     return
                 }
                 // If user exists, fetch data from firebase db
