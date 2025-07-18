@@ -6,10 +6,10 @@ const fugaz = Fugaz_One({subsets: ["latin"], weight: ["400"]})
 
 export default function Button(props) {
 
-    const {text, dark, full, glow } = props
+    const {text, dark, full, glow, clickHandler } = props
 
     return (
-        <button className={(glow ? "rounded-full overflow-hidden p-0.5 animate-background bg-conic/[from_var(--angle)] from-indigo-500 from-10% via-red-500 via-50% to-teal-500 to-90% hover:opacity-60 " 
+        <button onClick={clickHandler} className={(glow ? "rounded-full overflow-hidden p-0.5 animate-background bg-conic/[from_var(--angle)] from-indigo-500 from-10% via-red-500 via-50% to-teal-500 to-90% hover:opacity-60 " 
             : "rounded-full overflow-hidden duration-200 border-2 border-solid border-indigo-600 hover:opacity-60 ") +
             (dark ? "text-white bg-indigo-600 " : "text-indigo-600") + 
             (full ? "grid place-items-center w-full text-indigo-600" : "")

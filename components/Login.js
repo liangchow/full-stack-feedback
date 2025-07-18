@@ -55,7 +55,7 @@ export default function Login() {
         value={password} onChange={(e) => {setPassword(e.target.value)}} placeholder="Password" type="password" />
       
       <div className='max-w-[400px] w-full mx-auto'>
-        <Button onClick={handleSubmit} disabled={cantAuth || isAuthenticating} text={isAuthenticating ? 'Submiting...' : 'Submit'} full />
+        <Button clickHandler={handleSubmit} disabled={cantAuth || isAuthenticating} text={isAuthenticating ? 'Submiting...' : 'Submit'} full />
       </div>
       <p className='text-center'>
         {isRegister ? 'Already have an account? ' : 'Don\'t have an account? '} 
