@@ -1,16 +1,18 @@
 'use client'
+import { createContext, useContext, useState, useEffect } from "react"
 import { auth } from "@/firebase"
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth"
+import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from "firebase/auth"
 import { doc, getDoc } from "firebase/firestore"
-import React, { useContext, useState, useEffect } from "react"
 
-const AuthContext = React.createContext()
+const AuthContext = createContext()
 
 export function useAuth(){
     return useContext(AuthContext)
 }
 
-export function AuthProvider({children}){
+export function AuthProvider(props){
+
+    const { children } = props
 
     const [currentUser, setCurretUser] = useState(null)
     const [userDataObj, setUserDataObj] = useState({})
@@ -31,6 +33,11 @@ export function AuthProvider({children}){
         return signOut(auth)
     }
 
+    function resetPasswordEmail(email){
+        return sendPasswordResetEmail(auth, email)
+    }
+
+    // Listen to auth state changes
     useEffect(() => {
 
         const unsubscribe = onAuthStateChanged(auth, async user => {
@@ -71,10 +78,11 @@ export function AuthProvider({children}){
     const value = {
         currentUser,
         userDataObj,
+        loading,
         signup,
         logout,
         login,
-        loading
+        resetPasswordEmail
     }
 
     return (
