@@ -41,6 +41,8 @@ export function AuthProvider(props){
     useEffect(() => {
 
         const unsubscribe = onAuthStateChanged(auth, async user => {
+            
+            console.log('Authenticating user...')
     
             try {
                 // Set the user to our local context state
