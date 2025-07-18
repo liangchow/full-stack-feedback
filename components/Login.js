@@ -1,10 +1,39 @@
 import { Fugaz_One } from 'next/font/google'
-import React from 'react'
+import React, { useState } from 'react'
 import Button from './Button'
+import { useAuth } from '@/context/AuthContext'
 
 const fugaz = Fugaz_One({subsets: ["latin"], weight: ["400"]})
 
 export default function Login() {
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [isRegister, setIsRegister] = useState(false)
+  const [isAuthenticating, setIsAuthenticating] = useState(false)
+
+  const {login, singup} = useAuth()
+
+  const cantAuth =  !email.includes('@') || password.length < 6
+
+  async function handleAuthUser(){
+    // Check if email is legit and password is acceptable
+    if (cantAuth){
+      return
+    }
+
+    try {
+      if (isRegister){
+        // Then we need to register a user
+      }
+    } catch(err) {
+      console.log(err.message)
+    } finally {
+
+    }
+  }
+
+
   return (
     <div className='flex flex-col flex-1 justify-center items-center gap-4'>
       <h3 className={"text-4xl sm:text-5xl md:text-6xl "+fugaz.className}>Log In / Register</h3>

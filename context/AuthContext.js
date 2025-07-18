@@ -49,10 +49,9 @@ export function AuthProvider(props){
                 setLoading(true)
                 setCurretUser(user)
 
-                // if no user exists, return
+                // Guard clause: If no user exists, return 'No user found'
                 if (!user){
-                    console.log('No user found')
-                    return
+                    throw error('No user found')
                 }
                 // If user exists, fetch data from firebase db
                 console.log('Fetching user data')
@@ -67,12 +66,11 @@ export function AuthProvider(props){
                 }
                 setUserDataObj(firebaseData)
 
-            } catch(err){
-                console.log(err.message)
+            } catch(error){
+                console.log(error.message)
             } finally {
                 setLoading(false)
             }
-
         })
         return unsubscribe
     }, [])

@@ -1,8 +1,11 @@
 'use client'
 import { Fugaz_One } from 'next/font/google'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import CardList from './CardList'
 import Panel from './Panel'
+import Login from './Login'
+import Loading from './Loading'
+import { useAuth } from '@/context/AuthContext'
 
 const fugaz = Fugaz_One({subsets: ["latin"], weight: ["400"]})
 
@@ -11,12 +14,29 @@ const user = {firstName: "Hello", lastName: "World", src: ""}
 
 export default function Dashboard() {
 
-
+  // Auth
+  const {currentUser, userDataObj, setUserDataObj, loading } = useAuth()
   const [todos, setTodos] = useState([
     {firstName: "Joe", lastName: "Doe", comment: "You are awesome!", rating: 4, status: true, src: "https://liangchow.github.io/assets/img/profile/lchow.jpg"},
     {firstName: "Simone", lastName: "Ming", comment: "You're the best ;) I have not met people like you. I am wishing you the best in your future endeavors", rating: 5, status: true, src: ""},
-  ])
+    ])
 
+  useEffect(() => {
+    if (!currentUser || !userDataObj){
+      return
+    }
+    setData(userDataObj)
+    }, [currentUser, userDataObj])
+
+    if (loading){
+      return <Loading />
+    }
+
+    if (!currentUser){
+      return <Login />
+  }
+
+  // States
     function countValues(todos){
 
     let sumOfRating = todos.filter(todo => todo.status == true).map(todo => todo.rating).reduce((sumOfRating,rating) => sumOfRating + rating, 0)
