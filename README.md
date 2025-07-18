@@ -1,36 +1,27 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js Full Stack | Build & Deploy an EndorseMe App
 
-## Getting Started
+Full stack development with **Next.js 15**, **Firebase**, and **Tailwind CSS**. Features include authentication, database integration, styling, and deployment to collect feedback and endorsement from colleagues.
 
-First, run the development server:
+### **Description**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### **What You’ll Learn**
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+* How to set up and structure a full stack Next.js 15 project.
+* Implementing authentication with Firebase Auth.
+* Using Firestore to store, retrieve, and sync user data.
+* Managing app state and user sessions.
+* Building interactive UIs with the latest React features.
+* Writing and previewing Markdown content in a custom editor.
+* Utility-first styling with FantaCSS.
+* Deploying a Next.js app with environment variables using Netlify.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Extra for Experts
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* Custom file names
+* Search filter in side nav for documents
+* Cache notes already fetched in a global context state
+* Add categories for notes in side nav
+* Create a more comprehensive landing page
+* Implement the reset password feature
+* Manage login error states with appropriate conditionally rendered error messages
