@@ -15,7 +15,7 @@ export function AuthProvider(props){
     const { children } = props
 
     const [currentUser, setCurretUser] = useState(null)
-    const [userDataObj, setUserDataObj] = useState({})
+    const [userDataObj, setUserDataObj] = useState(null)
     const [loading, setLoading] = useState(true)
 
     // Auth Handlers
@@ -28,7 +28,7 @@ export function AuthProvider(props){
     }
 
     function logout(){
-        setUserDataObj({})
+        setUserDataObj(null)
         setCurretUser(null)
         return signOut(auth)
     }
