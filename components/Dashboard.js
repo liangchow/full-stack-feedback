@@ -18,11 +18,19 @@ export default function Dashboard() {
   const {currentUser, userDataObj, setUserDataObj, loading } = useAuth()
   const [data, setData] = useState({})
 
+  // States
+  const [todos, setTodos] = useState([])
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [comment, setComment] = useState('')
+  const [rating, setRating] = useState(0)
+  const [hover, setHover] = useState(null)
+
   // Fake data
-  const [todos, setTodos] = useState([
-    {firstName: "Joe", lastName: "Doe", comment: "You are awesome!", rating: 4, status: true, src: "https://liangchow.github.io/assets/img/profile/lchow.jpg"},
-    {firstName: "Simone", lastName: "Ming", comment: "You're the best ;) I have not met people like you. I am wishing you the best in your future endeavors", rating: 5, status: true, src: ""},
-    ])
+  // const [todos, setTodos] = useState([
+  //   {firstName: "Joe", lastName: "Doe", comment: "You are awesome!", rating: 4, status: true, src: "https://liangchow.github.io/assets/img/profile/lchow.jpg"},
+  //   {firstName: "Simone", lastName: "Ming", comment: "You're the best ;) I have not met people like you. I am wishing you the best in your future endeavors", rating: 5, status: true, src: ""},
+  //   ])
 
   useEffect(() => {
     if (!currentUser || !userDataObj){

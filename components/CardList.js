@@ -7,10 +7,6 @@ export default function CardList(props) {
   const { todos } = props
   
   function headshot(peer){
-    if (peer.src) {
-      return (
-        <Image className='rounded-full border border-solid border-indigo-500 ' src={peer.src} width={40} height={40} style={{objectFit: "contain"}} alt="pp" />
-    )} else {
       return (
         <div className='size-[40px] rounded-full bg-indigo-500 inline-flex items-center justify-center '>
             <p className={'text-base text-indigo-50 capitalize '}>{peer.firstName[0]}{peer.lastName[0]}</p>
