@@ -9,11 +9,11 @@ export default function CardList(props) {
   function headshot(peer){
       return (
         <div className='size-[40px] rounded-full bg-indigo-500 inline-flex items-center justify-center '>
-            <p className={'text-base text-indigo-50 capitalize '}>{peer.firstName[0]}{peer.lastName[0]}</p>
+            <p className={'text-base text-indigo-50 uppercase '}>{peer.firstName[0]}{peer.lastName[0]}</p>
         </div>
       )
     }
-  }
+  
 
   return (
     <ul className='flex flex-col flex-1 gap-1 p-4'>
