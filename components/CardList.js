@@ -13,7 +13,7 @@ export default function CardList(props) {
     )} else {
       return (
         <div className='size-[40px] rounded-full bg-indigo-500 inline-flex items-center justify-center '>
-            <p className={'text-base text-indigo-50 '}>{peer.firstName[0]}{peer.lastName[0]}</p>
+            <p className={'text-base text-indigo-50 capitalize '}>{peer.firstName[0]}{peer.lastName[0]}</p>
         </div>
       )
     }
@@ -29,8 +29,8 @@ export default function CardList(props) {
                       {headshot(todo)}
                     </div>
                     <div className='flex flex-col ml-1 w-full'>     
-                      <span className='text-lg sm:text-xl font-semibold '>{todo.firstName} {todo.lastName}</span>
-                      <span className='text-base sm:text-lg'>{todo.comment}</span>
+                      <span className='text-lg sm:text-xl font-semibold capitalize '>{todo.firstName} {todo.lastName}</span>
+                      <span className='text-base sm:text-lg capitalize'>{todo.comment}</span>
                     </div>
                     <div className='flex p-2 ml-1 text-nowrap '>⭐ {todo.rating}/5</div>
                   </div>
