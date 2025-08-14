@@ -6,7 +6,8 @@ import Panel from './Panel'
 import Login from './Login'
 import Loading from './Loading'
 import { useAuth } from '@/context/AuthContext'
-
+import {db} from './firebase'
+import {query, collection, where, addDoc, getDocs, doc, getDoc, updateDoc} from 'firebase/firestore'
 
 const fugaz = Fugaz_One({subsets: ["latin"], weight: ["400"]})
 

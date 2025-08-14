@@ -1,8 +1,8 @@
 'use client'
 import { createContext, useContext, useState, useEffect } from "react"
-import { auth } from "@/firebase"
+import { auth, db } from "@/firebase"
 import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from "firebase/auth"
-import { doc, getDoc } from "firebase/firestore"
+import {query, collection, where, addDoc, getDocs, doc, getDoc, updateDoc} from 'firebase/firestore'
 
 const AuthContext = createContext()
 
@@ -39,7 +39,6 @@ export function AuthProvider(props){
 
     // Listen to auth state changes
     useEffect(() => {
-
         const unsubscribe = onAuthStateChanged(auth, async user => {
             
             console.log('Authenticating user...')
@@ -58,16 +57,30 @@ export function AuthProvider(props){
                 const docRef = doc(db, 'users', user.uid)
                 const docSnap = await getDoc(docRef)
 
-                let firebaseData = {}
+                let userData = {}
                 if (docSnap.exists()){
                     console.log('Found user data')
-                    firebaseData = docSnap.data()
-                    console.log(firebaseData)
+                    userData = docSnap.data()
+                    console.log(userData)
                 }
-                setUserDataObj(firebaseData)
+                setUserDataObj(userData)
 
-            } catch(error){
-                console.log(error.message)
+                // Fetch user feedback data
+                const q = query(collection(db, "todos"), where("userID", "==", user.uid))
+                const querySnapshot = await getDocs(q)
+                let todosArr = []
+
+                if (querySnapshot){
+                console.log('Found feedback data')
+                querySnapshot.forEach((doc) => {
+                    todosArr.push({...doc.data(), id: doc.id})
+                })}
+                
+                setTodos(todosArr)
+                console.log(todos)
+
+            } catch(err){
+                console.log(err)
             } finally {
                 setLoading(false)
             }
