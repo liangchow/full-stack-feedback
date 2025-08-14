@@ -36,8 +36,8 @@ export default function Login() {
         await login(email, password)
       }
 
-    } catch(error) {
-      console.log(error.message) 
+    } catch(err) {
+      console.log(err) 
     } finally {
       setIsAuthenticating(false)
     }

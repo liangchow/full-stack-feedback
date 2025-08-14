@@ -7,6 +7,7 @@ import Login from './Login'
 import Loading from './Loading'
 import { useAuth } from '@/context/AuthContext'
 
+
 const fugaz = Fugaz_One({subsets: ["latin"], weight: ["400"]})
 
 // Init user name for Panel
@@ -25,6 +26,7 @@ export default function Dashboard() {
   const [comment, setComment] = useState('')
   const [rating, setRating] = useState(0)
   const [hover, setHover] = useState(null)
+  const [status, setStatus] = useState(true) //Check this
 
   // Fake data
   // const [todos, setTodos] = useState([
@@ -48,7 +50,7 @@ export default function Dashboard() {
   }
 
   // States
-    function countValues(todos){
+  function countValues(todos){
 
     let sumOfRating = todos.filter(todo => todo.status == true).map(todo => todo.rating).reduce((sumOfRating,rating) => sumOfRating + rating, 0)
     let numReviews = todos.filter(todo => todo.status == true).length
@@ -59,11 +61,10 @@ export default function Dashboard() {
     }
   }
 
-    const stats = {
+  const stats = {
       ...countValues(todos)
   }
 
-    const [status, setStatus] = useState(true)
 
     // Toggle show or hide comment button on Card
     function handleToggleStatus(index){
