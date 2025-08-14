@@ -78,7 +78,7 @@ export function AuthProvider(props){
                 })}
                 
                 setUserFeedbackData(todosArr)
-                console.log(todosArr)
+                console.log(userFeedbackData)
 
             } catch(err){
                 console.log(err)

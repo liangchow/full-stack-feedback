@@ -19,7 +19,7 @@ export default function Dashboard() {
   // Auth
   const {currentUser, userDataObj, userFeedbackData, loading } = useAuth()
   const [data, setData] = useState({})
-  const [feedbackData, setFeedbackData] = useState({})
+  // const [feedbackData, setFeedbackData] = useState({})
 
   // States
   const [todos, setTodos] = useState([])
@@ -41,7 +41,8 @@ export default function Dashboard() {
       return
     }
     setData(userDataObj)
-    setFeedbackData(userFeedbackData)
+    // setTodos(userFeedbackData)
+
     }, [currentUser, userDataObj])
 
     if (loading){
