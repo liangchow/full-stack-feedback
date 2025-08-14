@@ -7,7 +7,7 @@ import Login from './Login'
 import Loading from './Loading'
 import { useAuth } from '@/context/AuthContext'
 import {db} from './firebase'
-import {query, collection, where, addDoc, getDocs, doc, getDoc, updateDoc} from 'firebase/firestore'
+
 
 const fugaz = Fugaz_One({subsets: ["latin"], weight: ["400"]})
 
@@ -17,8 +17,9 @@ const user = {firstName: "Hello", lastName: "World", src: ""}
 export default function Dashboard() {
 
   // Auth
-  const {currentUser, userDataObj, setUserDataObj, loading } = useAuth()
+  const {currentUser, userDataObj, userFeedbackData, loading } = useAuth()
   const [data, setData] = useState({})
+  const [feedbackData, setFeedbackData] = useState({})
 
   // States
   const [todos, setTodos] = useState([])
@@ -40,6 +41,7 @@ export default function Dashboard() {
       return
     }
     setData(userDataObj)
+    setFeedbackData(userFeedbackData)
     }, [currentUser, userDataObj])
 
     if (loading){

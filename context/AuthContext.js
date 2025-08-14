@@ -16,6 +16,7 @@ export function AuthProvider(props){
 
     const [currentUser, setCurretUser] = useState(null)
     const [userDataObj, setUserDataObj] = useState(null)
+    const [userFeedbackData, setuserFeedbackData] = useState(null)
     const [loading, setLoading] = useState(true)
 
     // Auth Handlers
@@ -76,8 +77,8 @@ export function AuthProvider(props){
                     todosArr.push({...doc.data(), id: doc.id})
                 })}
                 
-                setTodos(todosArr)
-                console.log(todos)
+                setUserFeedbackData(todosArr)
+                console.log(todosArr)
 
             } catch(err){
                 console.log(err)
@@ -91,6 +92,7 @@ export function AuthProvider(props){
     const value = {
         currentUser,
         userDataObj,
+        userFeedbackData,
         loading,
         signup,
         logout,
