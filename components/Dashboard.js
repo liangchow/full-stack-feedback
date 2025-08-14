@@ -6,13 +6,13 @@ import Panel from './Panel'
 import Login from './Login'
 import Loading from './Loading'
 import { useAuth } from '@/context/AuthContext'
-import {db} from './firebase'
+import {db} from '@/firebase'
 
 
 const fugaz = Fugaz_One({subsets: ["latin"], weight: ["400"]})
 
 // Init user name for Panel
-const user = {firstName: "Hello", lastName: "World", src: ""}
+// const user = {firstName: "Hello", lastName: "World", src: ""}
 
 export default function Dashboard() {
 
@@ -87,7 +87,7 @@ export default function Dashboard() {
             <p className={'text-lg sm:text-xl truncate ' + fugaz.className}>{stat === 'average_rating' ? '⭐ ': '' }{stats[stat]}{stat === 'num_reviews' ? ' 🔥': '' }</p>
           </div>
           )})}
-      <Panel user={user} />  
+      <Panel user={currentUser} />  
       </div>
       <h4 className={'text-4xl sm:text-5xl md:text-6xl text-center ' + fugaz.className}>
         What did your colleague <span>say</span> about you?

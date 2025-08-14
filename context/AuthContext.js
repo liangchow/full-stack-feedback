@@ -16,7 +16,7 @@ export function AuthProvider(props){
 
     const [currentUser, setCurretUser] = useState(null)
     const [userDataObj, setUserDataObj] = useState(null)
-    const [userFeedbackData, setuserFeedbackData] = useState(null)
+    const [userFeedbackData, setUserFeedbackData] = useState(null)
     const [loading, setLoading] = useState(true)
 
     // Auth Handlers
