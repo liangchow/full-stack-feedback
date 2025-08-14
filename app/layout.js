@@ -9,7 +9,7 @@ const fugaz = Fugaz_One({subsets: ["latin"], weight:["400"]})
 
 
 export const metadata = {
-  title: "EndorceMe App",
+  title: "Feedback App",
   description: "Make everyone counts!",
 };
 
@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
   const header = (
     <header className="p-4 sm:p-8 flex items-center justify-between gap-4">
       <Link href="/">
-        <h1 className={"text-lg sm:text-xl md:text-2xl textGradient " + fugaz.className}>EndorseMe</h1>
+        <h1 className={"text-lg sm:text-xl md:text-2xl textGradient " + fugaz.className}>Feedback</h1>
       </Link>
       <Logout />
     </header>
