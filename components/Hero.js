@@ -5,6 +5,7 @@ import Button from "./Button";
 import CardList from "./CardList";
 import Panel from "./Panel";
 import Link from "next/link";
+import CallToAction from "./CallToAction";
 
 const fugaz = Fugaz_One({subsets: ["latin"], weight: ["400"]})
 
@@ -18,16 +19,10 @@ export default function Hero() {
       <h1 className={"text-5xl sm:text-6xl md:text-7xl text-center " + fugaz.className}><span className="textGradient">Feedback</span> tracks your 
         <span className="textGradient"> feedback</span> from others!</h1>
       <p className="max-w-[500px] w-full mx-auto text-lg sm:text-xl md:text-2xl text-center">Your feedback, your <span className="font-semibold">superpowers!</span></p>
-      <div className="grid grid-cols-2 gap-4 w-fit mx-auto">
-        <Link href={'/dashboard'}>
-          <Button glow text="Sign Up" />
-        </Link>
-        <Link href={'/dashboard'}>
-          <Button text="Login" />
-        </Link>
-      </div>
+
       <div className="flex flex-col p-2 sm:p-4 md:p-8 ">
         {/* Demo data */}
+        <CallToAction />
         <Panel user={demoUser} />
         <CardList demo todos={demoData} />
       </div>
