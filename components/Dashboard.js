@@ -41,9 +41,13 @@ export default function Dashboard() {
       return
     }
     setData(userDataObj)
-    // setTodos(userFeedbackData)
+    
+    if (userFeedbackData) {
+      setTodos(userFeedbackData)
+      console.log(todos)
+    }
 
-    }, [currentUser, userDataObj])
+    }, [currentUser, userDataObj, userFeedbackData])
 
     if (loading){
       return <Loading />
