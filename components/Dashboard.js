@@ -44,7 +44,6 @@ export default function Dashboard() {
     
     if (userFeedbackData) {
       setTodos(userFeedbackData)
-      console.log(todos)
     }
 
     }, [currentUser, userDataObj, userFeedbackData])
