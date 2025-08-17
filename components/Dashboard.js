@@ -91,7 +91,7 @@ export default function Dashboard() {
             <p className={'text-lg sm:text-xl truncate ' + fugaz.className}>{stat === 'average_rating' ? '⭐ ': '' }{stats[stat]}{stat === 'num_reviews' ? ' 🔥': '' }</p>
           </div>
           )})}
-      <Panel currentUser={currentUser} />  
+      <Panel user={userDataObj} />  
       </div>
       <h4 className={'text-4xl sm:text-5xl md:text-6xl text-center ' + fugaz.className}>
         What did your colleague <span>say</span> about you?
