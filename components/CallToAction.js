@@ -18,7 +18,7 @@ export default function CallToAction() {
     }
 
   return (
-    <div className='grid grid-cols-2 gap-4 w-fit mx-auto'>
+    <div className='grid grid-cols-2 gap-4 p-2 w-fit mx-auto'>
         <Link href={'/dashboard'}>
             <Button glow text='Sign Up' />
         </Link>
