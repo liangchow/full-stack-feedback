@@ -22,9 +22,9 @@ function renderAvatar(user){
 
 export default function Avatar(props) {
 
-  const {user} = props
+  const {currentUser} = props
 
   return (
-    renderAvatar(user)
+    renderAvatar(currentUser)
   )
 }
