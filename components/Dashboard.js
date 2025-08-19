@@ -7,6 +7,7 @@ import Login from './Login'
 import Loading from './Loading'
 import { useAuth } from '@/context/AuthContext'
 import {db} from '@/firebase'
+import { updateDoc } from 'firebase/firestore'
 
 
 const fugaz = Fugaz_One({subsets: ["latin"], weight: ["400"]})
@@ -73,13 +74,34 @@ export default function Dashboard() {
   }
 
 
-    // Toggle show or hide comment button on Card
-    function handleToggleStatus(index){
-      setStatus(!status)
-      console.log(status)
-      todos[index].status == status;
-      console.log(todos[index].status)
-    }
+  // Toggle show or hide comment button on Card. Update todo.status in firebase.
+  async function handleToggleStatus(todo){
+    try {
+      const todoRef = doc(db, "todos", todo.id)
+      await updateDoc(todoRef, {
+        status: !todo.status
+      })
+
+    const updatedTodos = todos.map(item => {
+      if (item.id === todo.id){
+        return {...item, status: !item.status}
+      }
+      return item
+    })
+    setTodos(updatedTodos)
+  } catch(err) {
+    console.log(err)
+  }}  
+
+
+    // function handleToggleStatus(index){
+    //   setStatus(!status)
+    //   console.log(status)
+    //   todos[index].status == status;
+    //   console.log(todos[index].status)
+    // }
+
+
 
   return (
     <div className='flex flex-col flex-1 gap-10 sm:gap-14 md:gap-20'>
