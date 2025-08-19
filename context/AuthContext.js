@@ -38,7 +38,7 @@ export function AuthProvider(props){
         return sendPasswordResetEmail(auth, email)
     }
 
-    // Listen to auth state changes
+    // Listen to auth state changes. Read user data from firebase.
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async user => {
             
