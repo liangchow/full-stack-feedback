@@ -10,7 +10,8 @@ import CallToAction from "./CallToAction";
 const fugaz = Fugaz_One({subsets: ["latin"], weight: ["400"]})
 
 // Init name for Panel
-const demoUser = {firstName: "Liang", lastName: "Chow", src: "https://liangchow.github.io/assets/img/profile/lchow.jpg"}
+  const demoUser = {firstName: "Liang", lastName: "Chow", src: "https://liangchow.github.io/assets/img/profile/lchow.jpg"}
+
 
 // States
 function countValues(todos){
@@ -29,6 +30,7 @@ const stats = {
 }
 
 export default function Hero() {
+
   return (
     <div className="flex flex-col py-4 md:py-8 gap-8 sm:gap-10">
       <h1 className={"text-5xl sm:text-6xl md:text-7xl text-center " + fugaz.className}><span className="textGradient">Feedback</span> tracks your 
