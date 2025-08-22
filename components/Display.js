@@ -1,18 +1,31 @@
 'use client'
-import Link from 'next/link'
 import React from 'react'
 import { useAuth } from '@/context/AuthContext'
 import { demoData } from "@/utils";
 import CardList from "./CardList";
 import Panel from "./Panel";
 
-export default function Display(props) {
+// States
+function countValues(todos){
+
+  let sumOfRating = todos.filter(todo => todo.status == true).map(todo => todo.rating).reduce((sumOfRating,rating) => sumOfRating + rating, 0)
+  let numReviews = todos.filter(todo => todo.status == true).length
+
+  return {
+    num_reviews: numReviews,
+    average_rating: (sumOfRating/numReviews).toFixed(1),
+  }
+}
+
+const stats = {
+    ...countValues(demoData)
+}
+
+export default function Display() {
     
     // Init name for Panel
     const demoUser = {firstName: "Liang", lastName: "Chow", src: "https://liangchow.github.io/assets/img/profile/lchow.jpg"}
     const {currentUser} = useAuth()
-
-    const { stats } = props
 
     if (currentUser){
         return (

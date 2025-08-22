@@ -14,21 +14,21 @@ const fugaz = Fugaz_One({subsets: ["latin"], weight: ["400"]})
 // Init name for Panel
 // const demoUser = {firstName: "Liang", lastName: "Chow", src: "https://liangchow.github.io/assets/img/profile/lchow.jpg"}
 
-// States
-function countValues(todos){
+// // States
+// function countValues(todos){
 
-  let sumOfRating = todos.filter(todo => todo.status == true).map(todo => todo.rating).reduce((sumOfRating,rating) => sumOfRating + rating, 0)
-  let numReviews = todos.filter(todo => todo.status == true).length
+//   let sumOfRating = todos.filter(todo => todo.status == true).map(todo => todo.rating).reduce((sumOfRating,rating) => sumOfRating + rating, 0)
+//   let numReviews = todos.filter(todo => todo.status == true).length
 
-  return {
-    num_reviews: numReviews,
-    average_rating: (sumOfRating/numReviews).toFixed(1),
-  }
-}
+//   return {
+//     num_reviews: numReviews,
+//     average_rating: (sumOfRating/numReviews).toFixed(1),
+//   }
+// }
 
-const stats = {
-    ...countValues(demoData)
-}
+// const stats = {
+//     ...countValues(demoData)
+// }
 
 export default function Hero() {
 
@@ -41,7 +41,7 @@ export default function Hero() {
       <div className="flex flex-col p-2 gap-8 sm:p-4 md:p-8 ">
         {/* Demo data */}
         <CallToAction />
-        <Display stats={stats} />
+        <Display />
         {/* <Panel demo stats={stats} user={demoUser} />
         <CardList demo todos={demoData} /> */}
       </div>
