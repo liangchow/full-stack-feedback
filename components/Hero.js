@@ -2,16 +2,17 @@ import { Fugaz_One} from "next/font/google";
 import { demoData } from "@/utils";
 import React from 'react'
 import Button from "./Button";
-import CardList from "./CardList";
-import Panel from "./Panel";
+// import CardList from "./CardList";
+// import Panel from "./Panel";
 import Link from "next/link";
 import CallToAction from "./CallToAction";
 import { useAuth } from '@/context/AuthContext'
+import Display from "./Display";
 
 const fugaz = Fugaz_One({subsets: ["latin"], weight: ["400"]})
 
 // Init name for Panel
-const demoUser = {firstName: "Liang", lastName: "Chow", src: "https://liangchow.github.io/assets/img/profile/lchow.jpg"}
+// const demoUser = {firstName: "Liang", lastName: "Chow", src: "https://liangchow.github.io/assets/img/profile/lchow.jpg"}
 
 // States
 function countValues(todos){
@@ -40,8 +41,9 @@ export default function Hero() {
       <div className="flex flex-col p-2 gap-8 sm:p-4 md:p-8 ">
         {/* Demo data */}
         <CallToAction />
-        <Panel demo stats={stats} user={demoUser} />
-        <CardList demo todos={demoData} />
+        <Display stats={stats} />
+        {/* <Panel demo stats={stats} user={demoUser} />
+        <CardList demo todos={demoData} /> */}
       </div>
     </div>
   )
