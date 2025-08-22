@@ -5,6 +5,9 @@ import { demoData } from "@/utils";
 import CardList from "./CardList";
 import Panel from "./Panel";
 
+// Init name for Panel
+const demoUser = {firstName: "Liang", lastName: "Chow", src: "https://liangchow.github.io/assets/img/profile/lchow.jpg"}
+
 // States
 function countValues(todos){
 
@@ -23,20 +26,21 @@ const stats = {
 
 export default function Display() {
     
-    // Init name for Panel
-    const demoUser = {firstName: "Liang", lastName: "Chow", src: "https://liangchow.github.io/assets/img/profile/lchow.jpg"}
     const {currentUser} = useAuth()
 
     if (currentUser){
-        return (
-            <p>{currentUser}</p>
-        )
-    }
-
         return (
             <>
                 <Panel demo stats={stats} user={demoUser} />
                 <CardList demo todos={demoData} />
             </>
         )
+    }
+
+    return (
+        <>
+            <Panel demo stats={stats} user={demoUser} />
+            <CardList demo todos={demoData} />
+        </>
+    )
 }

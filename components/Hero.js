@@ -1,12 +1,11 @@
 import { Fugaz_One} from "next/font/google";
 import { demoData } from "@/utils";
 import React from 'react'
-import Button from "./Button";
+// import Button from "./Button";
 // import CardList from "./CardList";
 // import Panel from "./Panel";
 import Link from "next/link";
 import CallToAction from "./CallToAction";
-import { useAuth } from '@/context/AuthContext'
 import Display from "./Display";
 
 const fugaz = Fugaz_One({subsets: ["latin"], weight: ["400"]})
