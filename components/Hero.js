@@ -6,12 +6,12 @@ import CardList from "./CardList";
 import Panel from "./Panel";
 import Link from "next/link";
 import CallToAction from "./CallToAction";
+import { useAuth } from '@/context/AuthContext'
 
 const fugaz = Fugaz_One({subsets: ["latin"], weight: ["400"]})
 
 // Init name for Panel
-  const demoUser = {firstName: "Liang", lastName: "Chow", src: "https://liangchow.github.io/assets/img/profile/lchow.jpg"}
-
+const demoUser = {firstName: "Liang", lastName: "Chow", src: "https://liangchow.github.io/assets/img/profile/lchow.jpg"}
 
 // States
 function countValues(todos){
