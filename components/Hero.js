@@ -1,10 +1,5 @@
 import { Fugaz_One} from "next/font/google";
-import { demoData } from "@/utils";
 import React from 'react'
-// import Button from "./Button";
-// import CardList from "./CardList";
-// import Panel from "./Panel";
-import Link from "next/link";
 import CallToAction from "./CallToAction";
 import Display from "./Display";
 
