@@ -26,13 +26,13 @@ const stats = {
 
 export default function Display() {
     
-    const {currentUser} = useAuth()
+    const {currentUser, userDataObj, userFeedbackData} = useAuth()
 
     if (currentUser){
         return (
             <>
-                <Panel demo stats={stats} user={demoUser} />
-                <CardList demo todos={demoData} />
+                <Panel stats={stats} user={userDataObj} />
+                <CardList todos={userFeedbackData} />
             </>
         )
     }
