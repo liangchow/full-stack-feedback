@@ -28,7 +28,9 @@ export default function Display() {
     
     const {currentUser, userDataObj, userFeedbackData} = useAuth()
 
+
     if (currentUser){
+        
         return (
             <>
                 <Panel stats={stats} user={userDataObj} />
