@@ -33,11 +33,8 @@ export default function Hero() {
       <p className="max-w-[500px] w-full mx-auto text-lg sm:text-xl md:text-2xl text-center">Your feedback, your <span className="font-semibold">superpowers!</span></p>
 
       <div className="flex flex-col p-2 gap-8 sm:p-4 md:p-8 ">
-        {/* Demo data */}
         <CallToAction />
         <Display />
-        {/* <Panel demo stats={stats} user={demoUser} />
-        <CardList demo todos={demoData} /> */}
       </div>
     </div>
   )
