@@ -8,6 +8,7 @@ const fugaz = Fugaz_One({subsets: ["latin"], weight: ["400"]})
 
 export default function Login() {
 
+  const [firstName, setFirstName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isRegister, setIsRegister] = useState(false)
