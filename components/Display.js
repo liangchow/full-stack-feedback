@@ -34,7 +34,7 @@ export default function Display() {
         return (
             <>
                 <Panel stats={stats} user={userDataObj} />
-                <CardList todos={userFeedbackData} />
+                <CardList demo todos={userFeedbackData} />
             </>
         )
     }
