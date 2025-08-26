@@ -17,9 +17,9 @@ export default function CardList(props) {
 
   return (
     <ul className='flex flex-col flex-1 gap-1 p-4'>
-        {todos?.length == 0 ? <p className='text-indigo-600 text-center'>You have 0 feedback. Send request to your peer!</p> : todos.map((todo, todoIndex) => {
+        {todos.length == 0 ? <p className='text-indigo-600 text-center'>You have 0 feedback. Send request to your peer!</p> : todos.map((todo, todoIndex) => {
             return(
-                <Card key={todoIndex} index={todoIndex} todo={todo} {...props} >
+                <Card {...props} key={todoIndex} index={todoIndex} >
                   <div className={'flex w-full justify-between items-center gap-1 text-indigo-600 ' + (todo.status == true ? '' : 'opacity-50')}>
                     <div className='flex ml-1 w-15'>
                       {headshot(todo)}

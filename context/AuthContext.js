@@ -20,16 +20,20 @@ export function AuthProvider(props){
     const [loading, setLoading] = useState(true)
 
     // Auth Handlers
-    function signup(email, password, firstName, lastName){
-        const userCredential = createUserWithEmailAndPassword(auth, email, password)
-        const user = userCredential.user
+    async function signup(email, password, firstName, lastName){
+        try {
+            const userCredential = createUserWithEmailAndPassword(auth, email, password)
+            const user = userCredential.user
 
-        addDoc(doc(db, 'users', user.uid), {
-            firstName: firstName,
-            lastName: lastName,
-            src: ""
-        })
-        return userCredential
+            await setDoc(doc(db, 'users', user.uid), {
+                firstName: firstName,
+                lastName: lastName,
+                src: ""
+            })
+            return userCredential 
+        } catch(err){
+            console.log(err)
+        }
     }
 
     function login(email, password){

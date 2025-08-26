@@ -31,7 +31,7 @@ export default function Login() {
       if (isRegister){
         // If not registered (default to false), then we need to register a user
         console.log('Signing up a new user')
-        await signup(email, password)
+        await signup(email, password, firstName, lastName)
       } else {
         // If registered, send them to login
         console.log('Logging in an user')
