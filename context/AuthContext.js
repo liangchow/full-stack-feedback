@@ -2,7 +2,7 @@
 import { createContext, useContext, useState, useEffect } from "react"
 import { auth, db } from "@/firebase"
 import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from "firebase/auth"
-import {query, collection, where, addDoc, getDocs, doc, getDoc, updateDoc} from 'firebase/firestore'
+import {query, collection, where, addDoc, getDocs, doc, getDoc, updateDoc, setDoc} from 'firebase/firestore'
 
 const AuthContext = createContext()
 
@@ -20,8 +20,16 @@ export function AuthProvider(props){
     const [loading, setLoading] = useState(true)
 
     // Auth Handlers
-    function signup(email, password){
-        return createUserWithEmailAndPassword(auth, email, password)
+    function signup(email, password, firstName, lastName){
+        const userCredential = createUserWithEmailAndPassword(auth, email, password)
+        const user = userCredential.user
+
+        addDoc(doc(db, 'users', user.uid), {
+            firstName: firstName,
+            lastName: lastName,
+            src: ""
+        })
+        return userCredential
     }
 
     function login(email, password){
