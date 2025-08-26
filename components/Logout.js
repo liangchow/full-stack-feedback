@@ -9,7 +9,6 @@ export default function Logout() {
 
     const {logout, currentUser} = useAuth()
     const pathname = usePathname()
-    console.log(pathname)
 
     if (!currentUser){
         return null
