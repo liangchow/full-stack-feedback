@@ -22,7 +22,7 @@ export function AuthProvider(props){
     // Auth Handlers
     async function signup(email, password, firstName, lastName){
         try {
-            const userCredential = createUserWithEmailAndPassword(auth, email, password)
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password)
             const user = userCredential.user
 
             await setDoc(doc(db, 'users', user.uid), {
