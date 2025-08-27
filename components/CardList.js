@@ -25,8 +25,8 @@ export default function CardList(props) {
                       {headshot(todo)}
                     </div>
                     <div className='flex flex-col ml-1 w-full'>     
-                      <span className='text-lg sm:text-xl text-indigo-700 font-semibold capitalize '>{todo.firstName} {todo.lastName}</span>
-                      <span className='text-base sm:text-lg capitalize '>{todo.comment}</span>
+                      <span className='text-lg sm:text-xl font-semibold capitalize '>{todo.firstName} {todo.lastName}</span>
+                      <span className='text-base sm:text-lg capitalize'>{todo.comment}</span>
                     </div>
                     <div className='flex p-2 ml-1 text-nowrap '>⭐ {todo.rating}/5</div>
                   </div>
