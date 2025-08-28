@@ -20,9 +20,9 @@ function countValues(todos){
   }
 }
 
-// const stats = {
-//     ...countValues(demoData)
-// }
+const stats = {
+    ...countValues(demoData)
+}
 
 export default function Display() {
     
@@ -30,8 +30,6 @@ export default function Display() {
 
     if (currentUser){
       const stats = {...countValues(userFeedbackData)}
-    } else {
-      const stats = {...countValues(demoData)}
     }
 
     return (
