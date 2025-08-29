@@ -20,11 +20,17 @@ function countValues(todos){
   }
 }
 
+const stats = {
+    ...countValues(demoData)
+}
+
 export default function Display() {
     
     const {currentUser, userDataObj, userFeedbackData} = useAuth()
 
-    const stats = currentUser ? {...countValues(userFeedbackData)} : {...countValues(demoData)}
+    if (currentUser){
+      const stats = {...countValues(userFeedbackData)}
+    }
 
     return (
         <>
