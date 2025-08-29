@@ -24,9 +24,7 @@ export default function Display() {
     
     const {currentUser, userDataObj, userFeedbackData} = useAuth()
 
-    const stats = currentUser ? 
-        {...countValues(userFeedbackData)} : 
-        {...countValues(demoData)}
+    const stats = currentUser ? {...countValues(userFeedbackData)} : {...countValues(demoData)}
 
     return (
         <>
