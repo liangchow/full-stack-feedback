@@ -2,7 +2,7 @@
 import { createContext, useContext, useState, useEffect } from "react"
 import { auth, db } from "@/firebase"
 import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from "firebase/auth"
-import {query, collection, where, addDoc, getDocs, doc, getDoc, updateDoc, setDoc} from 'firebase/firestore'
+import {query, collection, where, getDocs, doc, getDoc, setDoc} from 'firebase/firestore'
 
 const AuthContext = createContext()
 
