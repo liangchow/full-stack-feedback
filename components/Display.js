@@ -34,8 +34,8 @@ export default function Display() {
 
     return (
         <>
-            <Panel demo stats={stats} user={currentUser ? userDataObj: demoUser} />
-            <CardList demo todos={currentUser ? userFeedbackData: demoData} />
+            <Panel demo stats={stats} user={currentUser ? userDataObj : demoUser} />
+            <CardList demo todos={currentUser ? userFeedbackData : demoData} />
         </>
     )
 }

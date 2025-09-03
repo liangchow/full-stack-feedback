@@ -14,8 +14,7 @@ export default function CardList(props) {
       )
     }
   
-
-  return (
+  return (   
     <ul className='flex flex-col flex-1 gap-1 p-4'>
         {todos.length == 0 ? <p className='text-indigo-600 text-center'>You have 0 feedback. Send request to your peer!</p> : todos.map((todo, todoIndex) => {
             return(
