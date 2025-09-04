@@ -18,7 +18,7 @@ export default function CallToAction() {
         )
     }
 
-    // Otherwise, shows Sign Up and Login buttons.
+    // Otherwise, show Sign Up and Login buttons.
   return (
     <div className='grid grid-cols-2 gap-4 p-2 w-fit mx-auto'>
         <Link href={'/dashboard'}>
