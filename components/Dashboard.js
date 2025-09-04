@@ -8,6 +8,7 @@ import Loading from './Loading'
 import { useAuth } from '@/context/AuthContext'
 import {db} from '@/firebase'
 import { updateDoc, doc } from 'firebase/firestore'
+import Button from './Button'
 
 
 const fugaz = Fugaz_One({subsets: ["latin"], weight: ["400"]})
@@ -113,7 +114,9 @@ export default function Dashboard() {
             <p className={'text-lg sm:text-xl truncate ' + fugaz.className}>{stat === 'average_rating' ? '⭐ ': '' }{stats[stat]}{stat === 'num_reviews' ? ' 🔥': '' }</p>
           </div>
           )})}
-      <Panel user={userDataObj} />  
+      <Panel user={userDataObj} />
+      <Button glow text='Preview'/>
+      <Button dark text='Share'/>   
       </div>
       <h4 className={'text-4xl sm:text-5xl md:text-6xl text-center ' + fugaz.className}>
         What did your colleague <span>say</span> about you?
