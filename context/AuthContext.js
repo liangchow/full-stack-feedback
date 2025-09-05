@@ -1,8 +1,9 @@
 'use client'
 import { createContext, useContext, useState, useEffect } from "react"
-import { auth, db } from "@/firebase"
-import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from "firebase/auth"
-import {query, collection, where, getDocs, doc, getDoc, setDoc} from 'firebase/firestore'
+import { auth, db, functions } from "@/firebase"
+import { createUserWithEmailAndPassword, getIdToken, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from "firebase/auth"
+import { query, collection, where, getDocs, doc, getDoc, setDoc} from 'firebase/firestore'
+import { httpsCallable } from "firebase/functions"
 
 const AuthContext = createContext()
 
@@ -33,6 +34,7 @@ export function AuthProvider(props){
             return userCredential 
         } catch(err){
             console.log(err)
+            throw err
         }
     }
 
@@ -41,13 +43,32 @@ export function AuthProvider(props){
     }
 
     function logout(){
+        // Clear user data on logout
         setUserDataObj(null)
         setCurretUser(null)
+        setUserFeedbackData(null)
         return signOut(auth)
     }
 
     function resetPasswordEmail(email){
         return sendPasswordResetEmail(auth, email)
+    }
+
+    async function generateShareLinkForTodos(){
+        if (!currentUser){
+            throw new Error("User must be authenticated to generate a share link")
+        }
+
+        try {
+            const idToken = await getIdToken(currentUser)
+            const generateLinkFn = httpsCallable(functions, "generateShareLink")
+            const res = await generateLinkFn()
+            const { shareToken } = res.data
+            return shareToken
+        } catch(err) {
+            console.log(err)
+            throw err
+        }
     }
 
     // Listen to auth state changes. Read user data from firebase.
@@ -93,6 +114,9 @@ export function AuthProvider(props){
 
             } catch(err){
                 console.log(err)
+                setUserDataObj(null)
+                setUserFeedbackData(null)
+                setCurretUser(null)
             } finally {
                 setLoading(false)
             }
@@ -108,7 +132,8 @@ export function AuthProvider(props){
         signup,
         logout,
         login,
-        resetPasswordEmail
+        resetPasswordEmail,
+        generateShareLinkForTodos
     }
 
     return (
