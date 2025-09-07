@@ -19,8 +19,10 @@ const fugaz = Fugaz_One({subsets: ["latin"], weight: ["400"]})
 export default function Dashboard() {
 
   // Auth
-  const {currentUser, userDataObj, userFeedbackData, loading } = useAuth()
+  const {currentUser, userDataObj, userFeedbackData, loading, generateShareLinkForTodos } = useAuth()
   const [data, setData] = useState({})
+  const [shareLink, setShareLink] = useState('')
+  const [linkGenerating, setLinkGenrating] = useState(false)
   // const [feedbackData, setFeedbackData] = useState({})
 
   // States
@@ -94,6 +96,19 @@ export default function Dashboard() {
     console.log(err)
   }}  
 
+  // handleGenerateShareLink
+ async function handleGenerateShareLink(){
+    if (!currentUser){
+    alert('You must log in to regerate a share link')
+    return
+    }
+    try {
+      const shareToken = await generateShareLinkForTodos()
+      const generatedLink = `${window.location.origin}/shared/${shareToken}`
+      setShareLink(generatedLink)
+    } catch(err) {
+      console.log(err)
+    }}  
 
     // function handleToggleStatus(index){
     //   setStatus(!status)
