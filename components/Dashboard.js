@@ -133,8 +133,10 @@ export default function Dashboard() {
           </div>
           )})}
       <Panel user={userDataObj} />
-      <Button glow text='Preview'/>
-      <Button dark text='Share'/>   
+      {/* <Button glow text='Preview'/> */}
+      <Button dark text='Share' onClick={handleGenerateShareLink} disabled={linkGenerating}>
+          {linkGenerating ? 'Generating...' : 'Generate Shareable Link'}
+      </Button> 
       </div>
       <h4 className={'text-4xl sm:text-5xl md:text-6xl text-center ' + fugaz.className}>
         What did your colleague <span>say</span> about you?
