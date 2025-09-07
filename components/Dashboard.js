@@ -97,21 +97,21 @@ export default function Dashboard() {
   }}  
 
   // handleGenerateShareLink
- async function handleGenerateShareLink(){
-    if (!currentUser){
-    alert('You must log in to regerate a share link')
-    return
-    }
+  async function handleGenerateShareLink() {
+    setLinkGenerating(true); // Start loading state for button
     try {
-      const shareToken = await generateShareLinkForTodos()
-      const generatedLink = `${window.location.origin}/shared/${shareToken}`
-      setShareLink(generatedLink)
-    } catch(err) {
-      console.log(err)
+      // The generateShareLinkForTodos function in AuthContext already handles
+      // checking for currentUser. If not authenticated, it will throw an error.
+      const shareToken = await generateShareLinkForTodos();
+      const generatedLink = `${window.location.origin}/shared/${shareToken}`;
+      setShareLink(generatedLink);
+    } catch (err) {
+      console.error("Error generating share link:", err); // Log the full error
+      alert(`Failed to generate share link: ${err.message || 'An unknown error occurred.'}`); // Inform user
     } finally {
-      setLinkGenerating(false)
+      setLinkGenerating(false); // End loading state
     }
-  }  
+  } 
 
     // function handleToggleStatus(index){
     //   setStatus(!status)
