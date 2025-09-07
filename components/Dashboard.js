@@ -144,6 +144,20 @@ export default function Dashboard() {
       <div className=''>
         <CardList todos={todos} handleToggleStatus={handleToggleStatus} />
       </div>
+      {shareLink && (
+        <div className="mt-4 p-4 bg-gray-100 rounded-lg">
+          <p className="font-medium">Your shareable link:</p>
+          <a href={shareLink} target="_blank" rel="noopener noreferrer" className="text-blue-600 break-all">
+            {shareLink}
+          </a>
+          <button
+            onClick={() => navigator.clipboard.writeText(shareLink)}
+            className="ml-4 px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
+          >
+            Copy
+          </button>
+        </div>
+      )}
     </div>
   )
 }
