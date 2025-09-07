@@ -22,7 +22,7 @@ export default function Dashboard() {
   const {currentUser, userDataObj, userFeedbackData, loading, generateShareLinkForTodos } = useAuth()
   const [data, setData] = useState({})
   const [shareLink, setShareLink] = useState('')
-  const [linkGenerating, setLinkGenrating] = useState(false)
+  const [linkGenerating, setLinkGenerating] = useState(false)
   // const [feedbackData, setFeedbackData] = useState({})
 
   // States
@@ -108,7 +108,10 @@ export default function Dashboard() {
       setShareLink(generatedLink)
     } catch(err) {
       console.log(err)
-    }}  
+    } finally {
+      setLinkGenerating(false)
+    }
+  }  
 
     // function handleToggleStatus(index){
     //   setStatus(!status)
