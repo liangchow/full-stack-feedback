@@ -111,7 +111,7 @@ export default function Dashboard() {
     } finally {
       setLinkGenerating(false); // End loading state
     }
-  } 
+  }
 
     // function handleToggleStatus(index){
     //   setStatus(!status)
