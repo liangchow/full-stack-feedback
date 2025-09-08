@@ -1,7 +1,7 @@
 'use client'
 import { createContext, useContext, useState, useEffect } from "react"
 import { auth, db, functions } from "@/firebase"
-import { createUserWithEmailAndPassword, getIdToken, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from "firebase/auth"
+import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, getIdToken } from "firebase/auth"
 import { query, collection, where, getDocs, doc, getDoc, setDoc} from 'firebase/firestore'
 import { httpsCallable } from "firebase/functions"
 
@@ -64,6 +64,7 @@ export function AuthProvider(props){
             const generateLinkFn = httpsCallable(functions, "generateShareLink")
             const res = await generateLinkFn()
             const { shareToken } = res.data
+            console.log(shareToken)
             return shareToken
         } catch(err) {
             console.log(err)
