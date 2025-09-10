@@ -1,4 +1,4 @@
-# Next.js Full Stack | Build & Deploy an EndorseMe App
+# Next.js Full Stack | Build & Deploy an Feedback App
 
 Full stack development with **Next.js 15**, **Firebase**, and **Tailwind CSS**. Features include authentication, database integration, styling, and deployment to collect feedback and endorsement from colleagues.
 
