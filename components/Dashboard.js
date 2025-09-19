@@ -20,7 +20,7 @@ const fugaz = Fugaz_One({subsets: ["latin"], weight: ["400"]})
 export default function Dashboard() {
 
   // Auth
-  const {currentUser, userDataObj, userFeedbackData, loading, generateShareLinkForTodos } = useAuth()
+  const {currentUser, userDataObj, userFeedbackData, loading, generateShareLinkForTodos, refetchUserFeedbackData } = useAuth()
   const searchParams = useSearchParams()
   const mode = searchParams.get('mode')
   const [data, setData] = useState({})
@@ -95,6 +95,7 @@ export default function Dashboard() {
       return item
     })
     setTodos(updatedTodos)
+    await refetchUserFeedbackData()
   } catch(err) {
     console.log(err)
   }}  

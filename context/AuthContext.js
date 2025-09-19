@@ -125,6 +125,32 @@ export function AuthProvider(props){
         return unsubscribe
     }, [])
 
+    // Function to refetch user feedback data
+    async function refetchUserFeedbackData() {
+        if (!currentUser) {
+            console.log('No current user to refetch data for')
+            return
+        }
+
+        try {
+            console.log('Refetching user feedback data...')
+            const q = query(collection(db, "todos"), where("userID", "==", currentUser.uid))
+            const querySnapshot = await getDocs(q)
+            let todosArr = []
+
+            if (querySnapshot) {
+                console.log('Found updated feedback data')
+                querySnapshot.forEach((doc) => {
+                    todosArr.push({...doc.data(), id: doc.id})
+                })
+            }
+            
+            setUserFeedbackData(todosArr)
+        } catch(err) {
+            console.log('Error refetching user feedback data:', err)
+        }
+    }
+
     const value = {
         currentUser,
         userDataObj,
@@ -134,7 +160,8 @@ export function AuthProvider(props){
         logout,
         login,
         resetPasswordEmail,
-        generateShareLinkForTodos
+        generateShareLinkForTodos,
+        refetchUserFeedbackData
     }
 
     return (
