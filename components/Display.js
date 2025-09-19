@@ -24,7 +24,7 @@ export default function Display() {
     
     const {currentUser, userDataObj, userFeedbackData} = useAuth()
 
-    const stats = currentUser ? countValues(userFeedbackData || []) : countValues(demoData)
+    const stats = currentUser ? countValues(userFeedbackData) : countValues(demoData)
     const filteredTodos = currentUser ? 
         (userFeedbackData || []).filter(todo => todo.status == true) : 
         demoData.filter(todo => todo.status == true)
