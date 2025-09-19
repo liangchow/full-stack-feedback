@@ -1,6 +1,7 @@
 'use client'
 import { Fugaz_One } from 'next/font/google'
 import React, { useState, useEffect } from 'react'
+import { useSearchParams } from 'next/navigation'
 import CardList from './CardList'
 import Panel from './Panel'
 import Login from './Login'
@@ -20,6 +21,8 @@ export default function Dashboard() {
 
   // Auth
   const {currentUser, userDataObj, userFeedbackData, loading, generateShareLinkForTodos } = useAuth()
+  const searchParams = useSearchParams()
+  const mode = searchParams.get('mode')
   const [data, setData] = useState({})
   const [shareLink, setShareLink] = useState('')
   const [linkGenerating, setLinkGenerating] = useState(false)
@@ -57,7 +60,7 @@ export default function Dashboard() {
     }
 
     if (!currentUser){
-      return <Login />
+      return <Login isRegister={mode === 'signup'} />
   }
 
   // States

@@ -6,13 +6,13 @@ import { useAuth } from '@/context/AuthContext'
 
 const fugaz = Fugaz_One({subsets: ["latin"], weight: ["400"]})
 
-export default function Login() {
+export default function Login({ isRegister: initialIsRegister = false }) {
 
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [isRegister, setIsRegister] = useState(false)
+  const [isRegister, setIsRegister] = useState(initialIsRegister)
   const [isAuthenticating, setIsAuthenticating] = useState(false)
 
   const {login, signup} = useAuth()

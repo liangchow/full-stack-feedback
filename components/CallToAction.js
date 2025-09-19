@@ -21,10 +21,10 @@ export default function CallToAction() {
     // Otherwise, show Sign Up and Login buttons.
   return (
     <div className='grid grid-cols-2 gap-4 p-2 w-fit mx-auto'>
-        <Link href={'/dashboard'}>
+        <Link href={'/dashboard?mode=signup'}>
             <Button glow text='Sign Up' />
         </Link>
-        <Link href={'/dashboard'}>
+        <Link href={'/dashboard?mode=login'}>
             <Button text='Login' />
         </Link>
     </div>
