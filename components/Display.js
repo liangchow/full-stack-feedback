@@ -25,11 +25,14 @@ export default function Display() {
     const {currentUser, userDataObj, userFeedbackData} = useAuth()
 
     const stats = currentUser ? countValues(userFeedbackData || []) : countValues(demoData)
+    const filteredTodos = currentUser ? 
+        (userFeedbackData || []).filter(todo => todo.status == true) : 
+        demoData.filter(todo => todo.status == true)
 
     return (
         <>
             <Panel demo stats={stats} user={currentUser ? userDataObj: demoUser} />
-            <CardList demo todos={currentUser ? userFeedbackData: demoData} />
+            <CardList demo todos={filteredTodos} />
         </>
     )
 }
