@@ -26,7 +26,7 @@ export default function Display() {
 
     const stats = currentUser ? countValues(userFeedbackData) : countValues(demoData)
     const filteredTodos = currentUser ? 
-        (userFeedbackData || []).filter(todo => todo.status == true) : 
+        userFeedbackData.filter(todo => todo.status == true) : 
         demoData.filter(todo => todo.status == true)
 
     return (
