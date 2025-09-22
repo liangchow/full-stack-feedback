@@ -3,10 +3,10 @@ import React from 'react'
 
 export default function Card(props) {
 
-    const { children, handleToggleStatus, todo, demo } = props
+    const { children, handleToggleStatus, todo, demo, readOnly } = props
 
-    // If demo, only return {chidlren}. No status toggle button.
-    if (demo) {
+    // If demo or readOnly, only return {children}. No status toggle button.
+    if (demo || readOnly) {
         return (
             <li className="max-w-[1000px] w-full mx-auto flex justify-between items-center bg-white mt-2 p-2 hover:shadow-lg rounded-3xl border-2 border-solid border-indigo-300">
                 {children}
@@ -14,7 +14,7 @@ export default function Card(props) {
         )
     }
 
-    // Return Card with {chidlren} and the status toggle button.
+    // Return Card with {children} and the status toggle button.
     return (
         <li className="max-w-[1000px] w-full mx-auto flex justify-between items-center bg-white mt-2 p-2 hover:shadow-lg rounded-3xl border-2 border-solid border-indigo-300"> 
             {children}

@@ -60,14 +60,35 @@ export function AuthProvider(props){
         }
 
         try {
-            const idToken = await getIdToken(currentUser)
-            const generateLinkFn = httpsCallable(functions, "generateShareLink")
-            const res = await generateLinkFn()
-            const { shareToken } = res.data
-            console.log(shareToken)
+            // Generate a unique token using timestamp and user ID
+            const timestamp = Date.now()
+            const shareToken = `${currentUser.uid}_${timestamp}`
+            
+            // Store the share token in Firestore with user's todos data
+            const shareDocRef = doc(db, 'sharedTodos', shareToken)
+            
+            // Get current user's todos
+            const q = query(collection(db, "todos"), where("userID", "==", currentUser.uid))
+            const querySnapshot = await getDocs(q)
+            let todosArr = []
+            
+            querySnapshot.forEach((doc) => {
+                todosArr.push({...doc.data(), id: doc.id})
+            })
+            
+            // Store the shared data
+            await setDoc(shareDocRef, {
+                userID: currentUser.uid,
+                todos: todosArr,
+                userData: userDataObj,
+                createdAt: new Date(),
+                expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) // 7 days expiry
+            })
+            
+            console.log('Share token generated:', shareToken)
             return shareToken
         } catch(err) {
-            console.log(err)
+            console.log('Error generating share link:', err)
             throw err
         }
     }
