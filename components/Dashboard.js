@@ -72,7 +72,7 @@ export default function Dashboard() {
 
     return {
       num_reviews: numReviews,
-      average_rating: numReviews > 0 ? (sumOfRating/numReviews).toFixed(1) : 0,
+      average_rating: numReviews > 0 ? (sumOfRating/numReviews).toFixed(1) : 0, ///// *** Check 0 vs. '0' 
     }
   }
 
@@ -115,6 +115,17 @@ export default function Dashboard() {
       alert(`Failed to generate share link: ${err.message || 'An unknown error occurred.'}`); // Inform user
     } finally {
       setLinkGenerating(false); // End loading state
+    }
+  }
+
+  async function handleCopyLink(){
+    try {
+      await navigator.clipboard.writeText(shareLink)
+      setShareLinkCopied(true)
+      setTimeout(() => setShareLinkCopied(false), 300000) // Reset after 5 minutes
+    } catch(err) {
+      console.error('Failed to copy link: ', err)
+      alert('Failed to copy link to clipboard')
     }
   }
 
