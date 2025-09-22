@@ -26,6 +26,7 @@ export default function Dashboard() {
   const [data, setData] = useState({})
   const [shareLink, setShareLink] = useState('')
   const [linkGenerating, setLinkGenerating] = useState(false)
+  const [shareLinkCopied, setShareLinkCopied] = useState(false)
   // const [feedbackData, setFeedbackData] = useState({})
 
   // States
@@ -71,7 +72,7 @@ export default function Dashboard() {
 
     return {
       num_reviews: numReviews,
-      average_rating: (sumOfRating/numReviews).toFixed(1),
+      average_rating: numReviews > 0 ? (sumOfRating/numReviews).toFixed(1) : 0,
     }
   }
 
@@ -103,9 +104,9 @@ export default function Dashboard() {
   // handleGenerateShareLink
   async function handleGenerateShareLink() {
     setLinkGenerating(true); // Start loading state for button
+    setShareLinkCopied(false)
     try {
-      // The generateShareLinkForTodos function in AuthContext already handles
-      // checking for currentUser. If not authenticated, it will throw an error.
+      // The generateShareLinkForTodos function in AuthContext already handles checking for currentUser. If not authenticated, it will throw an error.
       const shareToken = await generateShareLinkForTodos();
       const generatedLink = `${window.location.origin}/shared/${shareToken}`;
       setShareLink(generatedLink);
