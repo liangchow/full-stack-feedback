@@ -149,28 +149,45 @@ export default function Dashboard() {
           </div>
           )})}
       <Panel user={userDataObj} />
-        <div>
-          {/* <Button glow text='Preview'/> */}
-          <Button dark text='Share' onClick={handleGenerateShareLink} disabled={linkGenerating}>
-              {linkGenerating ? 'Generating...' : 'Generate Shareable Link'}
-          </Button>
-
-          {shareLink && (
-            <div className="p-4 bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-lg">
-              <p className="font-semibold text-green-800 mb-2">Your shareable link:</p>
-              <div className='flex items-center gap-2 mb-2'>
-                <input type="text" value={shareLink} readOnly className="flex-1 p-2 text-sm bg-white border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"/>
-                <Button onClick={handleCopyLink} className={`px-4 py-2 text-sm rounded transition-colors ${
-                    shareLinkCopied 
-                      ? 'bg-green-500 text-white' 
-                      : 'bg-blue-500 hover:bg-blue-600 text-white'
-                  }`}>
-                  {shareLinkCopied ? '✔ Copied' : 'Copy'}
-                </Button>
-              </div>
-            <p className="text-sm text-gray-600">Share this link with colleagues so they can view your feedback and add their own! <span className="font-medium"> Link expires in 7 days.</span></p>
+        <div className="flex flex-col gap-4">
+        <Button 
+          dark 
+          text='Share' 
+          onClick={handleGenerateShareLink} 
+          disabled={linkGenerating}
+          className="w-full"
+        >
+          {linkGenerating ? 'Generating...' : 'Generate Shareable Link'}
+        </Button>
+        
+        {shareLink && (
+          <div className="p-4 bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-lg">
+            <p className="font-semibold text-green-800 mb-2">🎉 Your shareable link is ready!</p>
+            <div className="flex items-center gap-2 mb-2">
+              <input 
+                type="text" 
+                value={shareLink} 
+                readOnly 
+                className="flex-1 p-2 text-sm bg-white border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <Button
+                onClick={handleCopyLink}
+                className={`px-4 py-2 text-sm rounded transition-colors ${
+                  shareLinkCopied 
+                    ? 'bg-green-500 text-white' 
+                    : 'bg-blue-500 hover:bg-blue-600 text-white'
+                }`}
+              >
+                {shareLinkCopied ? '✓ Copied!' : 'Copy'}
+              </Button>
+            </div>
+            <p className="text-sm text-gray-600">
+              Share this link with colleagues so they can view your feedback and add their own! 
+              <span className="font-medium"> Link expires in 7 days.</span>
+            </p>
           </div>
-          )}
+        )}
+      </div>
       </div>
       <h4 className={'text-4xl sm:text-5xl md:text-6xl text-center ' + fugaz.className}>
         What did your colleague <span>say</span> about you?
