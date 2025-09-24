@@ -1,37 +1,41 @@
 import React from 'react'
 import Card from './Card'
-import Image from 'next/image'
 
-export default function CardList(props) {
+export default function CardList({ todos, handleToggleStatus, readOnly = false }) {
   
-  const { todos } = props
-  
-  function headshot(peer){
-      return (
-        <div className='size-[40px] rounded-full bg-indigo-500 inline-flex items-center justify-center '>
-            <p className={'text-base text-indigo-50 uppercase '}>{peer.firstName[0]}{peer.lastName[0]}</p>
+  // Filter to only show todos with status = true for public view
+  const visibleTodos = readOnly ? todos.filter(todo => todo.status === true) : todos
+
+  if (visibleTodos.length === 0) {
+    return (
+      <div className="text-center py-12">
+        <div className="max-w-md mx-auto">
+          <div className="text-6xl mb-4">📝</div>
+          <h3 className="text-xl font-semibold text-gray-700 mb-2">
+            {readOnly ? 'No feedback to show yet' : 'No feedback yet'}
+          </h3>
+          <p className="text-gray-500">
+            {readOnly 
+              ? 'Be the first to share your feedback!' 
+              : 'Your feedback will appear here once colleagues start sharing their thoughts.'
+            }
+          </p>
         </div>
-      )
-    }
-  
-  return (   
-    <ul className='flex flex-col flex-1 gap-1 p-4'>
-        {todos.length == 0 ? <p className='text-indigo-600 text-center'>You have 0 feedback. Send request to your peer!</p> : todos.map((todo, todoIndex) => {
-            return(
-                <Card key={todoIndex} index={todoIndex} todo={todo} {...props} >
-                  <div className={'flex w-full justify-between items-center gap-1 text-indigo-600 ' + (todo.status == true ? '' : 'opacity-50')}>
-                    <div className='flex ml-1 w-15'>
-                      {headshot(todo)}
-                    </div>
-                    <div className='flex flex-col ml-1 w-full'>     
-                      <span className='text-lg sm:text-xl font-semibold capitalize '>{todo.firstName} {todo.lastName}</span>
-                      <span className='text-base sm:text-lg capitalize'>{todo.comment}</span>
-                    </div>
-                    <div className='flex p-2 ml-1 text-nowrap '>⭐ {todo.rating}/5</div>
-                  </div>
-                </Card>
-            )
-        })}
-    </ul>
+      </div>
+    )
+  }
+
+  return (
+    <div className="grid gap-4 sm:gap-6">
+      {visibleTodos.map((todo, index) => (
+        <Card 
+          key={todo.id || index} 
+          todo={todo} 
+          index={index}
+          handleToggleStatus={readOnly ? null : handleToggleStatus}
+          readOnly={readOnly}
+        />
+      ))}
+    </div>
   )
 }

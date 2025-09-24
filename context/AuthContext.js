@@ -1,8 +1,9 @@
 'use client'
 import { createContext, useContext, useState, useEffect } from "react"
-import { auth, db } from "@/firebase"
+import { auth, db, functions } from "@/firebase"
 import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from "firebase/auth"
-import { query, collection, where, getDocs, doc, getDoc, setDoc} from 'firebase/firestore'
+import { query, collection, where, getDocs, doc, getDoc, setDoc, orderBy} from 'firebase/firestore'
+import { httpsCallable } from "firebase/functions"
 
 const AuthContext = createContext()
 
@@ -28,7 +29,9 @@ export function AuthProvider(props){
             await setDoc(doc(db, 'users', user.uid), {
                 firstName: firstName,
                 lastName: lastName,
-                src: ""
+                src: "",
+                createdAt: new Date(),
+                updatedAt: new Date()
             })
             return userCredential 
         } catch(err){
@@ -61,8 +64,11 @@ export function AuthProvider(props){
         try {
             // Generate a unique token using timestamp and user ID
             const timestamp = Date.now()
-            const randomSuffix = Math.random().toString(36).substring(2, 15)
+            const randomSuffix = Math.random().toStrong(36).substring(2,15)
             const shareToken = `${currentUser.uid}_${timestamp}_${randomSuffix}`
+            
+            // Store the share token in Firestore with user's todos data
+            const shareDocRef = doc(db, 'sharedTodos', shareToken)
             
             // Get current user's todos
             const q = query(collection(db, "todos"), where("userID", "==", currentUser.uid))
@@ -73,58 +79,19 @@ export function AuthProvider(props){
                 todosArr.push({...doc.data(), id: doc.id})
             })
             
-            // Store the shared data in the sharedTodos collection
-            const shareDocRef = doc(db, 'sharedTodos', shareToken)
+            // Store the shared data
             await setDoc(shareDocRef, {
                 userID: currentUser.uid,
                 todos: todosArr,
-                userData: {
-                    firstName: userDataObj.firstName,
-                    lastName: userDataObj.lastName,
-                    src: userDataObj.src
-                },
-                shareToken: shareToken,
+                userData: userDataObj,
                 createdAt: new Date(),
-                expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days expiry
-                isActive: true,
-                viewCount: 0,
-                feedbackCount: todosArr.length
+                expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) // 7 days expiry
             })
             
             console.log('Share token generated:', shareToken)
             return shareToken
         } catch(err) {
             console.log('Error generating share link:', err)
-            throw new Error(`Failed to generate share link: ${err.message}`)
-        }
-    }
-
-    // Function to get shared todos data (for the shared page)
-    async function getSharedTodosData(shareToken) {
-        try {
-            const shareDocRef = doc(db, 'sharedTodos', shareToken)
-            const shareDocSnap = await getDoc(shareDocRef)
-
-            if (!shareDocSnap.exists()) {
-                throw new Error('Share link not found')
-            }
-
-            const shareData = shareDocSnap.data()
-            
-            // Check if link has expired
-            const now = new Date()
-            const expiresAt = shareData.expiresAt.toDate()
-            if (now > expiresAt) {
-                throw new Error('Share link has expired')
-            }
-
-            if (!shareData.isActive) {
-                throw new Error('Share link has been deactivated')
-            }
-
-            return shareData
-        } catch(err) {
-            console.log('Error fetching shared todos data:', err)
             throw err
         }
     }
@@ -142,7 +109,7 @@ export function AuthProvider(props){
 
                 // Guard clause: If no user exists, return 'No user found'
                 if (!user){
-                    throw new Error('No user found')
+                    throw error('No user found')
                 }
                 // If user exists, fetch data from firebase db
                 console.log('Fetching user data')
@@ -218,7 +185,6 @@ export function AuthProvider(props){
         login,
         resetPasswordEmail,
         generateShareLinkForTodos,
-        getSharedTodosData,
         refetchUserFeedbackData
     }
 
