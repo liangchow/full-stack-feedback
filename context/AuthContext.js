@@ -1,8 +1,8 @@
 'use client'
 import { createContext, useContext, useState, useEffect } from "react"
 import { auth, db, functions } from "@/firebase"
-import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, getIdToken } from "firebase/auth"
-import { query, collection, where, getDocs, doc, getDoc, setDoc} from 'firebase/firestore'
+import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from "firebase/auth"
+import { query, collection, where, getDocs, doc, getDoc, setDoc, orderBy} from 'firebase/firestore'
 import { httpsCallable } from "firebase/functions"
 
 const AuthContext = createContext()
@@ -29,7 +29,9 @@ export function AuthProvider(props){
             await setDoc(doc(db, 'users', user.uid), {
                 firstName: firstName,
                 lastName: lastName,
-                src: ""
+                src: "",
+                createdAt: new Date(),
+                updatedAt: new Date()
             })
             return userCredential 
         } catch(err){
@@ -62,7 +64,8 @@ export function AuthProvider(props){
         try {
             // Generate a unique token using timestamp and user ID
             const timestamp = Date.now()
-            const shareToken = `${currentUser.uid}_${timestamp}`
+            const randomSuffix = Math.random().toStrong(36).substring(2,15)
+            const shareToken = `${currentUser.uid}_${timestamp}_${randomSuffix}`
             
             // Store the share token in Firestore with user's todos data
             const shareDocRef = doc(db, 'sharedTodos', shareToken)
