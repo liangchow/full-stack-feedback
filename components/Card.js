@@ -5,11 +5,39 @@ export default function Card(props) {
 
     const { todo, index, handleToggleStatus, readOnly=false, demo=false } = props
 
+    // Get initials for avatar if no image is provided
+    const getInitials = (firstName, lastName) => {
+      return `${firstName?.charAt(0) || ''}${lastName?.charAt(0) || ''}`.toUpperCase()
+    }
+
+    // Card content
+    const cardContent = (
+        <>
+          <div className="flex items-center gap-3 flex-1">
+            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-semibold text-sm">
+              {todo.src ? (
+                <img 
+                  src={todo.src} 
+                  alt={`${todo.firstName} ${todo.lastName}`}
+                  className="w-full h-full rounded-full object-cover"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.nextSibling.style.display = 'flex';
+                  }}
+                />
+              ) : null}
+              <span style={{ display: todo.src ? 'none' : 'flex' }}>
+                {getInitials(todo.firstName, todo.lastName)}
+              </span>
+            </div>
+      </>
+    )
+
     // If demo, only return {chidlren}. No status toggle button.
     if (demo) {
         return (
             <li className="max-w-[1000px] w-full mx-auto flex justify-between items-center bg-white mt-2 p-2 hover:shadow-lg rounded-3xl border-2 border-solid border-indigo-300">
-                {children}
+                {cardContent}
             </li>  
         )
     }
@@ -17,7 +45,7 @@ export default function Card(props) {
     // Return Card with {chidlren} and the status toggle button.
     return (
         <li className="max-w-[1000px] w-full mx-auto flex justify-between items-center bg-white mt-2 p-2 hover:shadow-lg rounded-3xl border-2 border-solid border-indigo-300"> 
-            {children}
+            {cardContent}
             <div className='flex flex-col items-center p-2 gap-2 '>
                 <button onClick={() => handleToggleStatus(todo)}><i className={"text-indigo-600 hover:text-indigo-400 cursor-pointer transition " + (todo.status==false ? " fa-solid fa-eye-slash" : " fa-solid fa-eye")}></i></button>
             </div>
