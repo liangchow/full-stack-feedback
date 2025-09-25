@@ -36,11 +36,11 @@ export default function Card(props) {
             <div className="flex flex-col ml-1 w-full">
                 <div className={`${!todo.status && !readOnly ? 'opacity-50' : ''}`}>
                   <h3 className="font-semibold text-gray-900 text-lg">{todo.firstName} {todo.lastName}</h3>
-                  <p className="text-gray-700 leading-relaxed mb-2">{todo.comment}</p>
+                  <p className="text-gray-700 leading-relaxed mb-0.5">{todo.comment}</p>
                 </div>
             </div>
 
-            <div className='flex p-2 ml-1 text-nowrap text-gray-900 '>⭐ {todo.rating}/5</div>
+            <div className='flex p-1 ml-1 text-nowrap text-gray-900 '>⭐ {todo.rating}/5</div>
           </div>
         </>
       )

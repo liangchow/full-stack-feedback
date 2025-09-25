@@ -26,7 +26,7 @@ export default function CardList({ todos, handleToggleStatus, readOnly = false }
   }
 
   return (
-    <div className="grid gap-4 sm:gap-6">
+    <div className="grid gap-0.5 sm:gap-2">
       {visibleTodos.map((todo, index) => (
         <Card 
           key={todo.id || index} 
