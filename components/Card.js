@@ -14,7 +14,7 @@ export default function Card(props) {
     const cardContent = (
         <>
           <div className="flex items-center gap-3 flex-1">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-semibold text-sm">
+            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-purple-400 flex items-center justify-center text-white font-semibold text-lg">
               {todo.src ? (
                 <img 
                   src={todo.src} 
@@ -30,8 +30,25 @@ export default function Card(props) {
                 {getInitials(todo.firstName, todo.lastName)}
               </span>
             </div>
-      </>
-    )
+          </div>
+
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2 mb-1">
+              <h3 className="font-semibold text-gray-900 text-lg">
+                {todo.firstName} {todo.lastName}
+              </h3>
+            </div>
+          </div>
+          
+          {(todo.status || !readOnly) && (
+            <div className={`${!todo.status && !readOnly ? 'opacity-50' : ''}`}>
+              <p className="text-gray-700 leading-relaxed mb-2">
+                "{todo.comment}"
+              </p>
+            </div>
+          )}
+        </>
+      )
 
     // If demo, only return {chidlren}. No status toggle button.
     if (demo) {
