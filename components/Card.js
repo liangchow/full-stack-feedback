@@ -47,6 +47,9 @@ export default function Card(props) {
               </p>
             </div>
           )}
+
+          <div className='flex p-2 ml-1 text-nowrap '>⭐ {todo.rating}/5</div>
+
         </>
       )
 
