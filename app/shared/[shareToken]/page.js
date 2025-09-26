@@ -1,7 +1,7 @@
 // app/shared/[shareToken]/page.js
 import SharedFeedbackPage from '@/components/SharedFeedbackPage'
 
-export default function SharedPage() {
+export default function SharedPage({ params }) {
   return <SharedFeedbackPage />
 }
 

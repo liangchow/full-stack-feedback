@@ -90,12 +90,17 @@ export default function Dashboard() {
 
   // handleGenerateShareLink
   async function handleGenerateShareLink() {
+    console.log("Share button clicked!")
     setLinkGenerating(true)
     setShareLinkCopied(false)
     try {
+      console.log("Calling generateShareLinkForTodos...")
       const shareToken = await generateShareLinkForTodos()
+      console.log("Share token received:", shareToken)
       const generatedLink = `${window.location.origin}/shared/${shareToken}`
+      console.log("Generated link:", generatedLink)
       setShareLink(generatedLink)
+      console.log("Share link set successfully!")
     } catch (err) {
       console.error("Error generating share link:", err)
       alert(`Failed to generate share link: ${err.message || 'An unknown error occurred.'}`)
