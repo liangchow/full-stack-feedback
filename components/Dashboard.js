@@ -130,8 +130,7 @@ export default function Dashboard() {
       
       {/* Enhanced Share Section */}
       <div className="flex flex-col gap-3">
-        <Button 
-          dark 
+        <Button  
           onClick={handleGenerateShareLink} 
           disabled={linkGenerating}
           className="w-full"
@@ -149,7 +148,7 @@ export default function Dashboard() {
                 readOnly 
                 className="flex-1 p-2 text-sm bg-white border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
-              <button
+              <Button
                 onClick={handleCopyLink}
                 className={`px-4 py-2 text-sm rounded font-medium transition-all ${
                   shareLinkCopied 
@@ -158,7 +157,7 @@ export default function Dashboard() {
                 }`}
               >
                 {shareLinkCopied ? '✓ Copied!' : 'Copy'}
-              </button>
+              </Button>
             </div>
             <div className="text-sm text-gray-600 space-y-1">
               <p>📤 Share this link with colleagues so they can view your feedback and add their own!</p>
